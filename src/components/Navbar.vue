@@ -1,7 +1,6 @@
 <template>
-  <div class="w-full">
-    <!-- Top Navigation Bar -->
-    <div class="fixed top-0 left-0 w-full z-30 backdrop-blur-sm bg-opacity-60 bg-white">
+  <div class="w-full ">
+    <div class="fixed top-0 left-0 w-full z-30  backdrop-blur-sm bg-opacity-60 bg-white pb-[20px]">
       <!-- Mobile view -->
       <div class="container flex justify-between items-center py-2 md:hidden">
         <div class="flex items-center">
@@ -35,7 +34,7 @@
       </div>
 
       <!-- Desktop view -->
-      <div class="hidden md:flex justify-between items-center container py-2">
+      <div class="hidden md:flex justify-between items-center container pt-2 mb-5">
         <div class="text-sm font-semibold opacity-70 flex gap-6">
           <router-link to="/about-us">О компании</router-link>
           <router-link to="/shopping">Доставка и оплата</router-link>
@@ -49,10 +48,7 @@
           <router-link to="#" class="opacity-70">Заказать звонок</router-link>
         </div>
       </div>
-    </div>
 
-    <!-- Main Navigation Bar -->
-    <div class="fixed top-9 left-0 w-full z-20 py-3 backdrop-blur-sm bg-opacity-60 bg-white px-10 md:px-0">
       <div class="md:flex container items-center justify-between gap-5 hidden">
         <div class="flex items-center">
           <router-link to="/home" class="mr-3">
@@ -132,6 +128,8 @@
         </div>
       </div>
     </div>
+
+    
   </div>
 </template>
 
