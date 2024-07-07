@@ -40,7 +40,7 @@ const loading = ref(true);
 const fetchItems = async () => {
   try {
     const response = await axios.get('https://66863e0e83c983911b014b85.mockapi.io/nornlight/products');
-    items.value = response.data.slice(0, 8); 
+    items.value = response.data
     store.setItems(items.value); 
   } catch (error) {
     console.error('Error fetching data:', error);

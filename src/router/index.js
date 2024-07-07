@@ -77,6 +77,35 @@ const router = createRouter({
         },
       ],
     },
+
+    {
+      path: "/admin",
+      name: "admin",
+      component: () => import("../layout/admin.vue"),
+      redirect: "/admin/create-product",
+      children: [
+        {
+          path: "/admin/create-product",
+          name: "create-product",
+          component: () => import("../pages/admin/create-product.vue"),
+        },
+        {
+          path: "/admin/manage-product",
+          name: "manage-product",
+          component: () => import("../pages/admin/manage-product.vue"),
+        },
+        {
+          path: "/admin/update-product",
+          name: "update-product",
+          component: () => import("../pages/admin/update-product.vue"),
+        },
+        {
+          path: "/admin/order",
+          name: "order",
+          component: () => import("../pages/admin/order.vue"),
+        },
+      ],
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

@@ -6,6 +6,7 @@ export const usePiniaStore = defineStore({
     likedProducts: [],
     items: [],
     karzina: [],
+    orders: [],
   }),
   actions: {
     addToLikedProducts(productId) {
@@ -34,7 +35,24 @@ export const usePiniaStore = defineStore({
     removeFromKarzina(productId) {
       this.karzina = this.karzina.filter((id) => id !== productId);
     },
+    clearKarzina() {
+      this.karzina = [];
+    },
+    addOrder(order) {
+      this.orders.push(order);
+    },
   },
-
+  getters: {
+    getKarzinaProducts() {
+      return this.karzina.map((productId) => {
+        const product = this.items.find((item) => item.id === productId);
+        return {
+          ...product,
+          quantity: 1,
+          unitPrice: product.price,
+        };
+      });
+    },
+  },
   persist: true,
 });
