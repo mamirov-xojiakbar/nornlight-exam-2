@@ -3,7 +3,7 @@
     <div class="flex justify-between mb-[40px]">
       <p class="font-bold text-[40px] leading-[54.64px]">Почему NORNLIGHT?</p>
       <router-link
-        to="#"
+        to="/about-us"
         class="md:flex items-center border border-[#454545] py-[14px] px-[48px] rounded-[100px] gap-3 hidden"
       >
         <p class="font-medium text-[16px] leading-[21.86px]">О компании</p>
