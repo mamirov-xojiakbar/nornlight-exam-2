@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <About />
+  <div class="md:mt-[200px] mt-[140px]">
+    <Katalog />
     <Brands />
     <div class="flex justify-between mb-[40px] container">
       <p class="font-bold text-[30px] md:text-[40px] leading-[54.64px]">Блог</p>
@@ -22,13 +22,17 @@
       <p class="font-medium text-[16px] leading-[21.86px]">Перейти в блог</p>
       <img src="/strelka.png" alt="Arrow" />
     </router-link>
+
+    <!-- Text Section -->
+    <Text />
   </div>
 </template>
 
 <script setup>
-import About from "../components/about/About.vue";
-import Brands from "../components/home/brands.vue";
 import Blog from "../components/home/blog.vue";
+import Brands from "../components/home/brands.vue";
+import Katalog from "../components/home/katalog.vue";
+import Text from "../components/home/text.vue";
 </script>
 
 <style lang="scss" scoped></style>

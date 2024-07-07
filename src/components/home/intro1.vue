@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-[97px] mb-[50px]">
+  <div class="container mt-[97px] mb-[71px]">
     <div class="flex justify-between mb-[40px]">
       <p class="font-bold text-[40px] leading-[54.64px]">Почему NORNLIGHT?</p>
       <router-link

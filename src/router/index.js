@@ -50,6 +50,31 @@ const router = createRouter({
           name: "shopping",
           component: () => import("../pages/shopping.vue"),
         },
+        {
+          path: "/return",
+          name: "return",
+          component: () => import("../pages/return.vue"),
+        },
+        {
+          path: "/garant",
+          name: "garant",
+          component: () => import("../pages/garant.vue"),
+        },
+        {
+          path: "/contact",
+          name: "contact",
+          component: () => import("../pages/contact.vue"),
+        },
+        {
+          path: "/blog",
+          name: "blog",
+          component: () => import("../pages/blog.vue"),
+        },
+        {
+          path: "/katalog",
+          name: "katalog",
+          component: () => import("../pages/katalog.vue"),
+        },
       ],
     },
   ],

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex justify-center md:px-[2%] px-[16px]">
-    <div class="w-full rounded-[50px] bg-[#F2F2F2] mt-[140px] pb-[40px]">
+    <div class="w-full rounded-[50px] bg-[#F2F2F2] mt-[200px] pb-[40px]">
         <swiper
           :pagination="{
             dynamicBullets: true,
