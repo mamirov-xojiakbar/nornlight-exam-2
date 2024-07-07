@@ -44,14 +44,20 @@ export const usePiniaStore = defineStore({
   },
   getters: {
     getKarzinaProducts() {
-      return this.karzina.map((productId) => {
-        const product = this.items.find((item) => item.id === productId);
-        return {
-          ...product,
-          quantity: 1,
-          unitPrice: product.price,
-        };
-      });
+      return this.karzina
+        .map((productId) => {
+          const product = this.items.find((item) => item.id === productId);
+          if (!product) {
+            console.error(`Product with ID ${productId} not found`);
+            return null;
+          }
+          return {
+            ...product,
+            quantity: 1,
+            unitPrice: product.price,
+          };
+        })
+        .filter((product) => product !== null); // Filter out any null products
     },
   },
   persist: true,

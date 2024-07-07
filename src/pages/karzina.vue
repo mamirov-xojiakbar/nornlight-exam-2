@@ -29,14 +29,14 @@
               </div>
             </div>
             <div class="md:flex ml-[85px] md:mt-0 mt-[10px] md:ml-[150px] items-start">
-              <p class="md:w-[20%] font-normal text-[16px] leading-[20.8px]">{{ product.description }}</p>
-              <p class="mt-[20px] md:mt-0 md:w-[20%] font-normal text-[16px] leading-[20.8px] md:ml-[160px]">{{ product.article }}</p>
+              <p class="md:w-[20%] font-normal text-[16px] leading-[20.8px]">Светильник RADUGA COMBO XS Промышленное освещение; 50Вт; 230В; S4; XS;</p>
+              <p class="mt-[20px] md:mt-0 md:w-[20%] font-normal text-[16px] leading-[20.8px] md:ml-[160px]">RAD-COMBO-50/XXX/230/XXX/XXX/S4/XS</p>
               <div class="flex items-center md:ml-[120px] mt-[20px] md:mt-0">
-                <button @click="minus(product.id)" class="px-2 font-medium text-[24px] leading-[32.78px]">-</button>
-                <p class="font-medium text-[16px] leading-[21px] border border-opacity-[10%] py-[19px] px-[27px] rounded-[10px]">{{ product.quantity }}</p>
-                <button @click="plus(product.id)" class="px-2 font-medium text-[20px] leading-[27px]">+</button>
+                <button @click="minus" class="px-2 font-medium text-[24px] leading-[32.78px]">-</button>
+                <p class="font-medium text-[16px] leading-[21px] border border-opacity-[10%] py-[19px] px-[27px] rounded-[10px]">{{ count }}</p>
+                <button @click="plus" class="px-2 font-medium text-[20px] leading-[27px]">+</button>
               </div>
-              <button @click="remove(product.id)" class="absolute right-5 bottom-8">
+              <button @click="remove(product.id)" class="absolute right-5 bottom-8 md:bottom-[80px]">
                 <img src="/delete.png" alt="">
               </button>
             </div>
@@ -84,6 +84,8 @@
 import { usePiniaStore } from '../store/pinia';
 import { computed, ref } from 'vue';
 
+const count = ref(0)
+
 const store = usePiniaStore();
 
 const fullName = ref('');
@@ -110,19 +112,8 @@ const totalPrice = computed(() => {
   return (parseFloat(totalProductsPrice.value) + 580).toFixed(2);
 });
 
-const minus = (productId) => {
-  const product = getKarzinaProducts.value.find(p => p.id === productId);
-  if (product && product.quantity > 1) {
-    product.quantity -= 1;
-  }
-};
 
-const plus = (productId) => {
-  const product = getKarzinaProducts.value.find(p => p.id === productId);
-  if (product) {
-    product.quantity += 1;
-  }
-};
+
 
 const remove = (productId) => {
   store.removeFromKarzina(productId);
