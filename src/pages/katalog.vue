@@ -1,5 +1,6 @@
 <template>
   <div class="md:mt-[200px] mt-[140px]">
+    <p class="font-bold text-[30px] md:text-[40px] leading-[54.64px] container mb-[50px]">Каталог</p>
     <Katalog />
     <Brands />
     <div class="flex justify-between mb-[40px] container">
