@@ -1,19 +1,36 @@
 <template>
-  <div class="container mb-[100px] mt-[100px]">
-    <div class="flex justify-between mb-[40px]">
-      <p class="font-bold text-[40px] leading-[54.64px]">Популярные товары</p>
-      <router-link to="/all-products" class="md:flex hidden items-center border border-[#454545] py-[14px] px-[48px] rounded-[100px] gap-3">
-        <p class="font-medium text-[16px] leading-[21.86px]">Все товары</p>
-        <img src="/strelka.png" alt="">
-      </router-link>
-    </div>
+  <div class="container mb-[90px]">
+    <router-link to="#" class="text-[30px] font-bold flex items-center gap-1 mb-[40px]">
+      Catalog 
+      <svg xmlns="http://www.w3.org/2000/svg" class="mt-[6px]" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="black" d="M15.707 11.293a1 1 0 0 1 0 1.414l-5.657 5.657a1 1 0 1 1-1.414-1.414l4.95-4.95l-4.95-4.95a1 1 0 0 1 1.414-1.414z"/></g></svg>
+    </router-link>
 
     <div v-if="loading" class="flex justify-center items-center h-64">
       <p>Loading...</p>
     </div>
 
-    <div v-else class="grid md:grid-cols-4 grid-cols-2 gap-5">
-      <div v-for="item in items" :key="item.id" class="hover:shadow-xl border hover:border-none p-5 relative">
+    <swiper v-else
+      :slidesPerView="1"
+      :spaceBetween="15"
+      :breakpoints="{
+        '640': {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        '768': {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+        '1024': {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+      }"
+      :modules="modules"
+      navigation
+      class="mySwiper"
+    >
+      <swiper-slide v-for="item in items" :key="item.id" class="hover:shadow-xl border hover:border-none p-5 relative">
         <button @click="toggleLike(item.id)" class="absolute right-7 top-7 bg-white px-[10px] py-[9px] rounded-[50%]">
           <img :src="isLiked(item.id) ? '/red-like2.jpg' : '/like.png'" alt="Like">
         </button>
@@ -24,25 +41,15 @@
           <p class="line-through mt-[24px] opacity-[70%] font-medium text-[12px] leading-[13.2px]">${{ item.sale }}</p>
         </router-link>
 
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center w-full">
           <p class="font-bold text-[20px] leading-[22px]">${{ item.price }}</p>
           <button @click="clickKarzina(item.id)" class="bg-[#454545] px-[20px] py-[9px] rounded-[100px]">
             <img src="/karzina-2.png" alt="">
           </button>
         </div>
-      </div>
-    </div>
+      </swiper-slide>
 
-    <div class="w-full flex justify-center mt-[50px]">
-      <button @click="handleButtonClick" class="bg-[#dad4d4] text-black py-3 px-[100px] transition-text font-bold rounded-[10px]">
-        <span :class="{ 'fade-in': buttonClicked }">{{ buttonText }}</span>
-      </button>
-    </div>
-
-    <router-link to="/all-products" class="flex md:hidden mt-10 justify-center items-center border border-[#454545] py-[14px] px-[48px] rounded-[100px] gap-3">
-      <p class="font-medium text-[16px] leading-[21.86px]">Все товары</p>
-      <img src="/strelka.png" alt="">
-    </router-link>
+    </swiper>
   </div>
 </template>
 
@@ -51,6 +58,12 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 import { usePiniaStore } from '../../store/pinia'; 
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination, Navigation } from 'swiper/modules';
+const modules = [Pagination, Navigation];
 
 const store = usePiniaStore();
 const items = ref([]);
@@ -138,4 +151,27 @@ onMounted(fetchItems);
     opacity: 1;
   }
 }
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 400px; /* Adjust this value as needed */
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 </style>
