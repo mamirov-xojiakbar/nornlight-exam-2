@@ -1,7 +1,7 @@
 <template>
   <div class="md:container md:mb-[50px] md:mt-[100px] mb-[30px] ">
     <div class="flex justify-between mb-[40px]">
-      <p class="font-bold text-[40px] leading-[54.64px]">Популярные товары</p>
+      <p class="font-bold md:text-[40px] md:leading-[54.64px] text-[20px]">Популярные товары</p>
       <router-link to="/all-products" class="md:flex hidden items-center border border-[#454545] py-[14px] px-[48px] rounded-[100px] gap-3">
         <p class="font-medium text-[16px] leading-[21.86px]">Все товары</p>
         <img src="/strelka.png" alt="">
@@ -13,7 +13,7 @@
     </div>
 
     <div v-else class="grid md:grid-cols-4 grid-cols-2 gap-5">
-      <div v-for="item in items" :key="item.id" class="hover:shadow-xl relative  grid grid-rows-1  h-[470px] hover:rounded-[10px]">
+      <div v-for="item in items" :key="item.id" class="hover:shadow-xl relative  grid grid-rows-1 h-[400px] md:h-[470px] hover:rounded-[10px]">
         <button @click="toggleLike(item.id)" class="absolute right-3 top-3 border px-[10px] py-[9px] rounded-[50%]">
           <svg v-if="isLiked(item.id)" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 48 48" class="animate-svg">
             <path fill="#ff0000" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8"/>
@@ -24,7 +24,7 @@
         </button>
         
         <router-link :to="{ name: 'product-detail', params: { id: item.id } }">
-          <div class="h-[300px] rounded-[10px] flex ">
+          <div class="md:h-[300px] h-[230px] rounded-[10px] flex ">
             <img :src="item.img" alt="Img" class="rounded-[20px]">
           </div>
           <p class="font-medium text-[13px] leading-[20px] mt-[12px] mx-[10px]">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="w-full flex justify-center mt-[30px]">
-      <button @click="handleButtonClick" class="bg-[#dad4d4] text-black py-3 px-[130px] transition-text font-bold rounded-[10px]">
+      <button @click="handleButtonClick" class="bg-[#dad4d4] text-black py-3 px-[70px] md:px-[130px] transition-text font-bold rounded-[10px]">
         <span :class="{ 'fade-in': buttonClicked }">{{ buttonText }}</span>
       </button>
     </div>

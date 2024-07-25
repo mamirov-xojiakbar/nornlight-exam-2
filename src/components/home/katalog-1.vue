@@ -42,7 +42,7 @@
     </button>
 
     <router-link :to="{ name: 'product-detail', params: { id: item.id } }">
-      <div class="h-[300px] rounded-[10px] flex ">
+      <div class="md:h-[300px] h-[230px] rounded-[10px] flex ">
         <img :src="item.img" alt="Img" class="rounded-[20px]">
       </div>
       <p class="font-medium text-[13px] leading-[20px] mt-[12px] mx-[10px]">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
@@ -177,5 +177,9 @@ onMounted(fetchItems);
   animation: heart-beat 0.6s ease-in-out;
 }
 
-
+@media (max-width: 640px) {
+  .swiper-slide {
+    height: 400px !important;
+  }
+}
 </style>
