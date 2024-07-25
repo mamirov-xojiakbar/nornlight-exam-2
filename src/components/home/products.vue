@@ -1,7 +1,7 @@
 <template>
-  <div id="as" class="md:container md:mb-[50px] md:mt-[100px] mb-[30px] ">
+  <div id="as" class="md:container md:mb-[50px] md:mt-[100px] mb-[30px] mt-[20px]">
     <div class="flex justify-between mb-[40px]">
-      <p class="font-bold md:text-[40px] md:leading-[54.64px] text-[20px]">Популярные товары</p>
+      <p id="text" class="font-bold md:text-[40px] md:leading-[54.64px] text-[20px]">Популярные товары</p>
       <router-link to="/all-products" class="md:flex hidden items-center border border-[#454545] py-[14px] px-[48px] rounded-[100px] gap-3">
         <p class="font-medium text-[16px] leading-[21.86px]">Все товары</p>
         <img src="/strelka.png" alt="">
@@ -12,8 +12,8 @@
       <p>Loading...</p>
     </div>
 
-    <div v-else id="grid_p"class="grid md:grid-cols-4 grid-cols-2 gap-5">
-      <div v-for="item in items" :key="item.id" class="hover:shadow-xl relative  grid grid-rows-1 h-[400px] md:h-[470px] hover:rounded-[10px]">
+    <div v-else id="grid_p"class="grid md:grid-cols-5 grid-cols-2 gap-5">
+      <div v-for="item in items" :key="item.id" class="hover:shadow-xl relative  grid grid-rows-1 h-[400px] md:h-[500px] hover:rounded-[10px]">
         <button @click="toggleLike(item.id)" class="absolute right-3 top-3 border px-[10px] py-[9px] rounded-[50%]">
           <svg v-if="isLiked(item.id)" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 48 48" class="animate-svg">
             <path fill="#ff0000" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8"/>
@@ -164,6 +164,9 @@ onMounted(fetchItems);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
+  #text {
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -171,6 +174,7 @@ onMounted(fetchItems);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
+
 }
 
 @media (min-width: 840px) {

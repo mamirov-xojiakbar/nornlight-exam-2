@@ -135,7 +135,7 @@ const karzinaCount = computed(() => {
   backdrop-filter: blur(5px);
 }
 
-@media (max-width: 840px) {
+@media (max-width: 1015px) {
   #navbar {
     display: none;
   }

@@ -1,38 +1,24 @@
 <template>
-  <div class="w-full md:flex justify-center md:px-[2%] px-[16px] hidden">
-    <div class="w-full rounded-[50px] bg-[#F2F2F2] md:mt-[200px] pb-[40px]">
-      <swiper
-        :slidesPerView="1"
-        :spaceBetween="30"
-        :loop="true"
-        :pagination="{
-          clickable: true,
-        }"
-        :navigation="true"
-        :autoplay="{
-          delay: 2000,
-          disableOnInteraction: false
-        }"
-        :modules="modules"
-        class="mySwiper"
-      >
-        <swiper-slide v-for="item in 5" :key="item" >
-          <div class="md:grid md:grid-cols-2 gap-[50px] md:gap-[150px] md:container flex flex-col-reverse">
-            <div class="font-bold text-[40px] md:text-[54px] md:mt-[65px] mb-[50px] md:mb-[100px] text-start">
-              <p class="md:leading-[87.42px]">Скидка 15%</p>
-              <p class="md:leading-[87.42px]">на все подвесные</p>
-              <p class="md:leading-[87.42px]">светильники</p>
-              <p class="md:leading-[87.42px] bg-black text-white px-10 rounded-[100px]">
-                до 5 февраля
-              </p>
-            </div>
-            <div>
-              <img src="/head-img.png" alt="Image" />
-            </div>
-          </div>
-        </swiper-slide>
-      </swiper>
-    </div>
+  <div id="hdn" class="md:mt-[150px] md:container mt-[50px] h-[180px] md:h-full">
+    <swiper
+      :slidesPerView="1"
+      :spaceBetween="30"
+      :loop="true"
+      :pagination="{
+        clickable: true
+      }"
+      :navigation="true"
+      :autoplay="{
+        delay: 2000,
+        disableOnInteraction: false
+      }"
+      :modules="modules"
+      class="mySwiper"
+    >
+      <swiper-slide v-for="item in 5" :key="item">
+        <img src="https://images.uzum.uz/cqav62cqvss6ad8i8ihg/main_page_banner.jpg" alt="AA" class="rounded-[20px]">
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 
@@ -48,11 +34,13 @@ const modules = [Pagination, Navigation, Autoplay];
 </script>
 
 <style scoped>
+/* Swiper container style */
 .swiper {
   width: 100%;
   height: 100%;
 }
 
+/* Swiper slide style */
 .swiper-slide {
   font-size: 18px;
   display: flex;
@@ -65,5 +53,50 @@ const modules = [Pagination, Navigation, Autoplay];
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Navigation button styles */
+::v-deep #hdn .swiper-button-next,
+::v-deep #hdn .swiper-button-prev {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  transition: background-color 0.3s, box-shadow 0.3s !important;
+}
+
+::v-deep #hdn .swiper-button-next::after,
+::v-deep #hdn .swiper-button-prev::after {
+  font-size: 24px !important;
+  color: #333 !important;
+}
+
+/* Hover effect for navigation buttons */
+::v-deep #hdn .swiper-button-next:hover,
+::v-deep #hdn .swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Positioning buttons */
+::v-deep #hdn .swiper-button-next {
+  right: 15px !important;
+}
+
+::v-deep #hdn .swiper-button-prev {
+  left: 15px !important;
+}
+
+/* Hide navigation buttons on small screens */
+@media (max-width: 640px) {
+  ::v-deep #hdn .swiper-button-next,
+  ::v-deep #hdn .swiper-button-prev {
+    display: none !important;
+  }
 }
 </style>

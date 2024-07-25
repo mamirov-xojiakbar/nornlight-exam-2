@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="dropdownVisible2"
-    class="absolute text-start md:top-[110px] top-[-400px] left-0 z-40 duration-300 h-full w-full scale-100 "
+    class="absolute text-start md:top-[110px] top-[-400px] left-0 z-40 duration-300 h-full w-full scale-100 hidden md:block"
   >
     <div class="md:container bg-transparent h-[400px] ">
     <div class="grid md:grid-cols-5 grid-cols-2 overflow-auto bg-white border-b-[3px] border-b-gray-400">

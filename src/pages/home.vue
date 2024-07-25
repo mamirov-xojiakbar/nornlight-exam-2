@@ -3,9 +3,9 @@
     <!-- Home page components -->
     <HomeHead />
     <HomeProducts />
-    <img src="https://images.uzum.uz/cqav62cqvss6ad8i8ihg/main_page_banner.jpg" alt="AA" class="md:container mb-[70px] ">
+    <img src="https://images.uzum.uz/cqav62cqvss6ad8i8ihg/main_page_banner.jpg" alt="AA" class="md:container mb-[70px] h-[180px] md:h-full">
     <Katalog_1 />
-    <img src="https://images.uzum.uz/cqav62cqvss6ad8i8ihg/main_page_banner.jpg" alt="AA" class="md:container mb-[70px]">
+    <img src="https://images.uzum.uz/cqav62cqvss6ad8i8ihg/main_page_banner.jpg" alt="AA" class="md:container mb-[70px] h-[180px] md:h-full">
     <Katalog_1 />
   </div>
 </template>
