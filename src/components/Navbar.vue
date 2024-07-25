@@ -1,38 +1,6 @@
 <template>
   <div class="w-full">
-    <div class="fixed top-0 left-0 w-full z-30 backdrop-blur-sm bg-opacity-60 bg-white pb-[20px]">
-      <!-- Mobile view -->
-      <div class="container flex justify-between items-center py-2 md:hidden" :class="{ 'bg-white pt-[13px]': dropdownVisible }">
-        <div class="flex items-center">
-          <button @click="toggleDropdown" class="md:hidden block mr-3">
-            <img src="/black-list.png" alt="Menu icon" :class="{ hidden: dropdownVisible }">
-            <img src="/close.png" alt="Close icon" :class="{ hidden: !dropdownVisible }">
-          </button>
-          <router-link to="/home" class="mr-3">
-            <img src="/logo.png" alt="Logo" :class="{ hidden: dropdownVisible }" />
-          </router-link>
-        </div>
-
-        <div class="md:hidden flex md:gap-8 gap-4">
-          <router-link to="/saved" class="flex flex-col items-center mt-[2px]">
-            <img src="/saved.png" alt="Saved icon" />
-            <p v-if="likedProductCount > 0" class="bg-red-500 absolute top-1 right-12 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%]">{{ likedProductCount }}</p>
-            <span class="font-semibold text-xs mt-2 hidden md:block">Избранное</span>
-          </router-link>
-
-          <router-link to="#" class="md:flex hidden flex-col items-center">
-            <img src="/antena.png" alt="Comparison icon" />
-            <span class="font-semibold text-xs mt-2 hidden md:block">Сравнение</span>
-          </router-link>
-
-          <router-link to="/karzina" class="flex flex-col items-center">
-            <img src="/karzina.png" alt="Cart icon" />
-            <p v-if="karzinaCount > 0" class="bg-red-500 absolute top-1 right-1 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%]">{{ karzinaCount }}</p>
-            <span class="font-semibold text-xs mt-2 hidden md:block">Корзина</span>
-          </router-link>
-        </div>
-      </div>
-
+    <div class="md:fixed top-0 left-0 w-full z-30 backdrop-blur-sm bg-opacity-60 bg-white pb-[20px]">
       <!-- Desktop view -->
       <div class="hidden md:flex justify-between items-center container pt-2 mb-5">
         <div class="text-sm font-semibold opacity-70 flex gap-6">
@@ -55,13 +23,23 @@
             <img src="/logo.png" alt="Logo" class="mr-6" />
           </router-link>
 
-          <router-link
-            to="/katalog"
-            class="bg-gray-800 hidden md:flex text-white items-center gap-2 pr-12 pl-8 py-4 rounded-full"
+          <!-- Catalog button -->
+          <button
+            @click="toggleDropdown2"
+            class="bg-gray-800 hidden md:flex text-white items-center gap-2 px-6 py-2 rounded-[10px] group "
           >
-            <img src="/list.png" alt="Catalog icon" />
+            <svg v-if="!dropdownVisible2" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16" >
+              <path fill="white" d="M2 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m0 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M2.5 7a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1z"/>
+            </svg>
+            <svg v-if="dropdownVisible2" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" >
+              <g fill="none" fill-rule="evenodd">
+                <path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/>
+                <path fill="white" d="m12 13.414l5.657 5.657a1 1 0 0 0 1.414-1.414L13.414 12l5.657-5.657a1 1 0 0 0-1.414-1.414L12 10.586L6.343 4.929A1 1 0 0 0 4.93 6.343L10.586 12l-5.657 5.657a1 1 0 1 0 1.414 1.414z"/>
+              </g>
+            </svg>
             <span class="font-semibold text-lg">Каталог</span>
-          </router-link>
+          </button>
+          <Dropdown v-if="dropdownVisible2" />
         </div>
 
         <div class="md:flex border border-black rounded-full px-4 py-2 items-center w-[570px] hidden">
@@ -73,83 +51,44 @@
           <img src="/lupa.png" alt="Search icon" class="w-6 h-6 p-1" />
         </div>
 
-        <div class="flex md:gap-8 gap-2">
-          <router-link to="/saved" class="flex flex-col items-center mt-[2px]">
-            <div class="relative">
-              <img src="/saved.png" alt="Saved icon" />
-              <p v-if="likedProductCount > 0" class="bg-red-500 absolute bottom-2 left-4 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%]">{{ likedProductCount }}</p>
-            </div>
-            <span class="font-semibold text-xs mt-2 hidden md:block">Избранное</span>
+        <div class="flex md:gap-6 gap-2">
+          <router-link to="#" class="md:flex hidden flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21c0-2.761-3.582-5-8-5s-8 2.239-8 5m8-8a5 5 0 1 1 0-10a5 5 0 0 1 0 10"/></svg>
+            <span class="font-semibold text-xs mt-2 hidden md:block">профиль</span>
           </router-link>
 
-          <router-link to="#" class="md:flex hidden flex-col items-center">
-            <img src="/antena.png" alt="Comparison icon" />
-            <span class="font-semibold text-xs mt-2 hidden md:block">Сравнение</span>
+          <router-link to="/saved" class="flex flex-col items-center mt-[2px]">
+            <div class="relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 48 48"><path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8"/></svg>
+              <p v-if="likedProductCount > 0" class="bg-red-500 absolute bottom-2 left-4 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%]">{{ likedProductCount }}</p>
+            </div>
+            <span class="font-semibold text-xs mt-[6px] hidden md:block">Избранное</span>
           </router-link>
+
 
           <router-link to="/karzina" class="flex flex-col items-center">
             <div class="relative">
-              <img src="/karzina.png" alt="Cart icon" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 256 256"><path fill="black" d="M230.14 58.87A8 8 0 0 0 224 56H62.68L56.6 22.57A8 8 0 0 0 48.73 16H24a8 8 0 0 0 0 16h18l25.56 140.29a24 24 0 0 0 5.33 11.27a28 28 0 1 0 44.4 8.44h45.42a27.75 27.75 0 0 0-2.71 12a28 28 0 1 0 28-28H91.17a8 8 0 0 1-7.87-6.57L80.13 152h116a24 24 0 0 0 23.61-19.71l12.16-66.86a8 8 0 0 0-1.76-6.56M104 204a12 12 0 1 1-12-12a12 12 0 0 1 12 12m96 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12m4-74.57a8 8 0 0 1-7.9 6.57H77.22L65.59 72h148.82Z"/></svg>
               <p v-if="karzinaCount > 0" class="bg-red-500 absolute bottom-3 left-4 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%]">{{ karzinaCount }}</p>
             </div>
-            <span class="font-semibold text-xs mt-2 hidden md:block">Корзина</span>
+            <span class="font-semibold text-xs mt-[6px] hidden md:block">Корзина</span>
           </router-link>
-        </div>
-      </div>
-
-      <!-- Mobile Search Bar -->
-      <div class="flex border border-black rounded-full px-4 py-2 items-center w-full md:hidden mt-2">
-        <input
-          type="text"
-          placeholder="Поиск по товарам"
-          class="w-full border-none outline-none px-1 rounded-full bg-transparent"
-        />
-        <img src="/lupa.png" alt="Search icon" class="w-6 h-6 p-1" />
-      </div>
-
-      <!-- Mobile Dropdown Menu -->
-      <div v-if="dropdownVisible" class="md:hidden absolute top-10 left-0 w-full bg-white shadow-md z-40 px-3">
-        <div class="flex flex-col items-center py-4 justify-center">
-          <router-link @click="toggleDropdown" to="/about-us" class="w-full flex justify-center border-b py-3 opacity-70 text-sm">О компании</router-link>
-          <router-link @click="toggleDropdown" to="/shopping" class="w-full flex justify-center border-b py-3 opacity-70 text-sm">Доставка и оплата</router-link>
-          <router-link @click="toggleDropdown" to="/return" class="w-full flex justify-center border-b py-3 opacity-70 text-sm">Возврат</router-link>
-          <router-link @click="toggleDropdown" to="/garant" class="w-full flex justify-center border-b py-3 opacity-70 text-sm">Гарантии</router-link>
-          <router-link @click="toggleDropdown" to="/contact" class="w-full flex justify-center border-b py-3 opacity-70 text-sm">Контакты</router-link>
-          <router-link @click="toggleDropdown" to="/blog" class="w-full flex justify-center border-b py-3 opacity-70 text-sm">Блог</router-link>
-          <router-link @click="toggleDropdown"
-            to="#"
-            class="bg-gray-800 flex text-white items-center w-full gap-2 py-2 rounded-full mt-6 justify-center"
-          >
-            <img src="/list.png" alt="Catalog icon" />
-            <span class="font-semibold text-lg">Каталог</span>
-          </router-link>
-          <p class="mt-6">8 (800) 890-46-56</p>
-          <router-link to="#" class="opacity-70" @click="toggleCallForm">Заказать звонок</router-link>
         </div>
       </div>
     </div>
 
-    <!-- Dark overlay -->
-    <div v-if="dropdownVisible || callFormVisible" @click="closeOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-20"></div>
-
-    <!-- Call Form Popup -->
-    <div v-if="callFormVisible" class="fixed md:ml-[33%] mx-4 md:mx-0 z-50">
-      <div class="bg-white p-5 md:p-[64px] rounded-[30px] shadow-lg relative ">
-        <button @click="toggleCallForm" class="absolute top-1 right-[30px] text-[40px]">&times;</button>
-        <form @submit.prevent="submitForm">
-          <h2 class="text-[24px] font-bold mb-[20px]">Заполните, и мы перезвоним</h2>
-          <input type="text" id="name" v-model="name" required class="mt-1 px-[20px] py-[10px] block w-full border border-black rounded-[100px] shadow-sm  mb-[12px]">
-          <input type="tel" id="phone" v-model="phone" required class="mt-1 px-[20px] py-[10px] block w-full mb-[30px] border border-black rounded-[100px]">
-          <button type="submit" class="w-full bg-black text-white py-[20px] px-[10px] rounded-[100px] shadow-sm  ">Отправить</button>
-        </form>
-      </div>
-    </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref, computed } from 'vue';
 import { usePiniaStore } from '../store/pinia';
+import Dropdown from './home/Dropdown.vue';
+
+import { state, toggleDropdown2 } from '../state';
+
+const dropdownVisible2 = computed(() => state.dropdownVisible2);
 
 const dropdownVisible = ref(false);
 const callFormVisible = ref(false);
@@ -195,4 +134,5 @@ const karzinaCount = computed(() => {
 .backdrop-blur-sm {
   backdrop-filter: blur(5px);
 }
+
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full flex justify-center md:px-[2%] px-[16px]">
-    <div class="w-full rounded-[50px] bg-[#F2F2F2] mt-[200px] pb-[40px]">
+  <div class="w-full md:flex justify-center md:px-[2%] px-[16px] hidden">
+    <div class="w-full rounded-[50px] bg-[#F2F2F2] md:mt-[200px] pb-[40px]">
       <swiper
         :slidesPerView="1"
         :spaceBetween="30"
@@ -16,7 +16,7 @@
         :modules="modules"
         class="mySwiper"
       >
-        <swiper-slide v-for="item in 5" :key="item">
+        <swiper-slide v-for="item in 5" :key="item" >
           <div class="md:grid md:grid-cols-2 gap-[50px] md:gap-[150px] md:container flex flex-col-reverse">
             <div class="font-bold text-[40px] md:text-[54px] md:mt-[65px] mb-[50px] md:mb-[100px] text-start">
               <p class="md:leading-[87.42px]">Скидка 15%</p>

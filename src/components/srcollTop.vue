@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed w-full bottom-5 right-7 flex justify-end">
+  <div class="fixed w-full bottom-5 right-7 md:flex justify-end hidden">
     <div class="relative">
       <button
         @click="scrollToTop"
