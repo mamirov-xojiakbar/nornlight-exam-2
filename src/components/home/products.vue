@@ -1,5 +1,5 @@
 <template>
-  <div class="md:container md:mb-[50px] md:mt-[100px] mb-[30px] ">
+  <div id="as" class="md:container md:mb-[50px] md:mt-[100px] mb-[30px] ">
     <div class="flex justify-between mb-[40px]">
       <p class="font-bold md:text-[40px] md:leading-[54.64px] text-[20px]">Популярные товары</p>
       <router-link to="/all-products" class="md:flex hidden items-center border border-[#454545] py-[14px] px-[48px] rounded-[100px] gap-3">
@@ -12,7 +12,7 @@
       <p>Loading...</p>
     </div>
 
-    <div v-else class="grid md:grid-cols-4 grid-cols-2 gap-5">
+    <div v-else id="grid_p"class="grid md:grid-cols-4 grid-cols-2 gap-5">
       <div v-for="item in items" :key="item.id" class="hover:shadow-xl relative  grid grid-rows-1 h-[400px] md:h-[470px] hover:rounded-[10px]">
         <button @click="toggleLike(item.id)" class="absolute right-3 top-3 border px-[10px] py-[9px] rounded-[50%]">
           <svg v-if="isLiked(item.id)" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 48 48" class="animate-svg">
@@ -157,5 +157,26 @@ onMounted(fetchItems);
 
 .animate-svg {
   animation: heart-beat 0.6s ease-in-out;
+}
+
+@media (max-width: 840px) {
+  #grid_p {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  #grid_p {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 840px) {
+  #grid_p {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 </style>

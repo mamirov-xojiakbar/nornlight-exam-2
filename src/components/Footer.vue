@@ -11,34 +11,6 @@
                     <img v-for="item, i in 3" :key="i" src="/footer-2.png" alt="VK img">
                 </div>
             </div>
-            
-            <div class="flex flex-col">
-                <p class="font-bold text-[24px] leading-[32.78px] text-[#454545] mb-[32px]">Покупателям</p>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">О компании</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Доставка и оплата</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Возврат</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Гарантии</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Контакты</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Блог</router-link>
-            </div>
-
-            <div class="flex flex-col">
-                <p class="font-bold text-[24px] leading-[32.78px] text-[#454545] mb-[32px]">Товары</p>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Люстры</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Светильники</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Бра</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Торшеры</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Комплектуюшие</router-link>
-                <router-link to="#" class="opacity-[50%] md:mb-[27px]">Настольные лампы</router-link>
-            </div>
-
-            <div class="flex flex-col md:mt-[60px]">
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Споты</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Трековые светильники</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Уличные светильники</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Технические светильники</router-link>
-                <router-link to="#" class="opacity-[50%] mb-[27px]">Светодиодные ленты</router-link>
-            </div>
         </div>
     </div>
 </template>

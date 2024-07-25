@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <div class="md:fixed top-0 left-0 w-full z-30 backdrop-blur-sm bg-opacity-60 bg-white pb-[20px]">
+    <div id="navbar" class="md:fixed top-0 left-0 w-full z-30 backdrop-blur-sm bg-opacity-60 bg-white pb-[20px]">
       <!-- Desktop view -->
       <div class="hidden md:flex justify-between items-center container pt-2 mb-5">
         <div class="text-sm font-semibold opacity-70 flex gap-6">
@@ -134,5 +134,18 @@ const karzinaCount = computed(() => {
 .backdrop-blur-sm {
   backdrop-filter: blur(5px);
 }
+
+@media (max-width: 840px) {
+  #navbar {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  #navbar {
+    display: none;
+  }
+}
+
 
 </style>

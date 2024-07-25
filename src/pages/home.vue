@@ -21,5 +21,6 @@ import HomeProducts from "../components/home/products.vue";
 import Text from "../components/home/text.vue";
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+
 </style>

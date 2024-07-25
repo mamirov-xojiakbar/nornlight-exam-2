@@ -38,4 +38,5 @@ const dropdownVisible2 = computed(() => state.dropdownVisible2);
   backdrop-filter: blur(5px);
 }
 
+
 </style>
