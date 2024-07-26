@@ -38,7 +38,7 @@
               <p class="font-bold max-md:text-sm text-black">{{ type }}</p>
               <div>
                 <p
-                  class="text-lg font-normal text-[#666] max-md:text-sm border-b-[0.5px] border-b-black md:border-none"
+                  class="text-lg font-normal text-[#666] max-md:text-sm "
                   v-for="(data, dataIndex) in categories[selectedCategory].typeOfData[typeIndex]"
                   :key="dataIndex"
                 >
