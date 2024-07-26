@@ -12,16 +12,17 @@
             <router-link to="/karzina" class="flex flex-col items-center relative">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="black" fill-rule="evenodd" d="M7.5 7v-.5a4.5 4.5 0 0 1 9 0V7H19c.552 0 1 .449 1 1.007v12.001c0 1.1-.895 1.992-1.994 1.992H5.994A1.994 1.994 0 0 1 4 20.008v-12C4 7.45 4.445 7 5 7zM9 7h6v-.5a3 3 0 0 0-6 0zM7.5 7v4H9V7zM15 7v4h1.5V7z"/></svg>
                 <p class="text-[13px]">Savat</p>
-                <p v-if="karzinaCount > 0" class="bg-red-500 absolute bottom-7 right-6 w-[17px] h-[17px] flex items-center justify-center text-white rounded-[50%]">{{ karzinaCount }}</p>
+                <p v-if="karzinaCount > 0" class="bg-red-500 absolute bottom-2/1  left-1/2 w-[17px] h-[17px] flex items-center justify-center text-white rounded-[50%]">{{ karzinaCount }}</p>
             </router-link>
-            <div class="flex flex-col items-center">
+            <router-link to="/saved" class="flex flex-col items-center relative">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 48 48"><path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8"/></svg>
                 <p class="text-[13px]">Saralangan</p>
-            </div>
-            <div class="flex flex-col items-center">
+                <p v-if="likedProductCount > 0" class="bg-red-500 absolute bottom-2/1  left-1/2 w-[17px] h-[17px] flex items-center justify-center text-white rounded-[50%]">{{ likedProductCount }}</p>
+            </router-link>
+            <router-link to="/" class="flex flex-col items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.38em" height="1.5em" viewBox="0 0 448 512"><path fill="black" d="M224 256a128 128 0 1 0 0-256a128 128 0 1 0 0 256m-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512h388.6c16.4 0 29.7-13.3 29.7-29.7c0-98.5-79.8-178.3-178.3-178.3z"/></svg>
                 <p class="text-[13px]">Kabinet</p>
-            </div>
+            </router-link>
         </div>
     </div>
 </template>
@@ -34,6 +35,10 @@ const store = usePiniaStore();
 const karzinaCount = computed(() => {
   console.log(store.karzina);
   return store.karzina.length;
+});
+
+const likedProductCount = computed(() => {
+  return store.likedProducts.length;
 });
 </script>
 

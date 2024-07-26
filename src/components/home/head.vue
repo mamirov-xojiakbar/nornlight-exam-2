@@ -27,7 +27,6 @@
       </swiper-slide>
     </swiper>
 
-    <button @click="test">test</button>
   </div>
 </template>
 

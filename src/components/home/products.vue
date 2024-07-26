@@ -174,7 +174,9 @@ onMounted(fetchItems);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-
+  #text {
+    font-size: 23px;
+  }
 }
 
 @media (min-width: 840px) {
