@@ -1,7 +1,5 @@
 <template>
   <div class="container ">
-    
-
     <div class="grid md:grid-cols-3 gap-[30px]">
       <div
         v-for="(item, i) in katalog"

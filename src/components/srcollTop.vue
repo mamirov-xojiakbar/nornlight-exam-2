@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed w-full bottom-5 right-7 md:flex justify-end hidden">
+  <div id="top" class="fixed w-full bottom-5 right-7 md:flex justify-end hidden">
     <div class="relative">
       <button
         @click="scrollToTop"
@@ -40,3 +40,16 @@ onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 </script>
+<style scoped>
+@media (max-width: 1015px) {
+  #top {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  #top {
+    display: none
+  }
+}
+</style>

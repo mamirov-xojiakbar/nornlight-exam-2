@@ -3,7 +3,7 @@
     v-if="dropdownVisible2"
     class="absolute text-start md:top-[110px] top-[-400px] left-0 z-40 duration-300 h-full w-full scale-100 hidden md:block"
   >
-    <div class="md:container bg-transparent h-[400px] ">
+    <div class="bg-transparent h-[400px] container">
     <div class="grid md:grid-cols-5 grid-cols-2 overflow-auto bg-white border-b-[3px] border-b-gray-400">
         <!-- Left side with category names -->
         <div class="w-full h-[400px] overflow-auto bg-gray-300">
@@ -14,7 +14,7 @@
               class="flex flex-col gap-5 w-full"
             >
               <p
-                class="font-medium py-[10px] px-4 text-black cursor-pointer max-md:text-sm"
+                class="font-medium py-[10px] px-4 text-black cursor-pointer text-[15px]"
                 @click="selectCategory(index)"
                 :class="{
                   'text-blue-500 w-full bg-white': selectedCategory === index,
@@ -35,10 +35,10 @@
               :key="typeIndex"
               class="flex flex-col gap-5"
             >
-              <p class="font-bold max-md:text-sm text-black">{{ type }}</p>
+              <p class="font-bold text-[15px] text-black">{{ type }}</p>
               <div>
                 <p
-                  class="text-lg font-normal text-[#666] max-md:text-sm "
+                  class="text-lg font-normal text-[#666] text-[15px] "
                   v-for="(data, dataIndex) in categories[selectedCategory].typeOfData[typeIndex]"
                   :key="dataIndex"
                 >

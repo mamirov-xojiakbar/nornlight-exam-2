@@ -13,7 +13,6 @@
         </div>
         <div class="text-sm font-semibold flex gap-6 items-center">
           <p>8 (800) 890-46-56</p>
-          <button class="opacity-70" @click="toggleCallForm">Заказать звонок</button>
         </div>
       </div>
 
@@ -65,7 +64,6 @@
             <span class="font-semibold text-xs mt-[6px] hidden md:block">Избранное</span>
           </router-link>
 
-
           <router-link to="/karzina" class="flex flex-col items-center">
             <div class="relative">
               <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 256 256"><path fill="black" d="M230.14 58.87A8 8 0 0 0 224 56H62.68L56.6 22.57A8 8 0 0 0 48.73 16H24a8 8 0 0 0 0 16h18l25.56 140.29a24 24 0 0 0 5.33 11.27a28 28 0 1 0 44.4 8.44h45.42a27.75 27.75 0 0 0-2.71 12a28 28 0 1 0 28-28H91.17a8 8 0 0 1-7.87-6.57L80.13 152h116a24 24 0 0 0 23.61-19.71l12.16-66.86a8 8 0 0 0-1.76-6.56M104 204a12 12 0 1 1-12-12a12 12 0 0 1 12 12m96 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12m4-74.57a8 8 0 0 1-7.9 6.57H77.22L65.59 72h148.82Z"/></svg>
@@ -77,48 +75,20 @@
       </div>
     </div>
 
+    <!-- Overlay -->
+    <div v-if="dropdownVisible2" class="fixed inset-0 bg-black bg-opacity-0 z-20" @click="closeOverlay"></div>
   </div>
 </template>
+
 
 
 <script setup>
 import { ref, computed } from 'vue';
 import { usePiniaStore } from '../store/pinia';
 import Dropdown from './home/Dropdown.vue';
-
 import { state, toggleDropdown2 } from '../state';
 
 const dropdownVisible2 = computed(() => state.dropdownVisible2);
-
-const dropdownVisible = ref(false);
-const callFormVisible = ref(false);
-const name = ref('');
-const phone = ref('');
-
-function toggleDropdown() {
-  dropdownVisible.value = !dropdownVisible.value;
-}
-
-function toggleCallForm() {
-  callFormVisible.value = !callFormVisible.value;
-}
-
-function closeOverlay() {
-  dropdownVisible.value = false;
-  callFormVisible.value = false;
-}
-
-function submitForm() {
-  // Handle form submission logic here
-  console.log('Name:', name.value);
-  console.log('Phone:', phone.value);
-  // Reset form fields
-  name.value = '';
-  phone.value = '';
-  // Close the form
-  closeOverlay();
-}
-
 const store = usePiniaStore();
 
 const likedProductCount = computed(() => {
@@ -128,7 +98,13 @@ const likedProductCount = computed(() => {
 const karzinaCount = computed(() => {
   return store.karzina.length;
 });
+
+function closeOverlay() {
+  toggleDropdown2();  // Toggle the dropdown state to close it
+}
 </script>
+
+
 
 <style scoped>
 .backdrop-blur-sm {
@@ -146,6 +122,6 @@ const karzinaCount = computed(() => {
     display: none;
   }
 }
-
-
 </style>
+
+
