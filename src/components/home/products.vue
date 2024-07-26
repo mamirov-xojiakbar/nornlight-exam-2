@@ -159,7 +159,7 @@ onMounted(fetchItems);
   animation: heart-beat 0.6s ease-in-out;
 }
 
-@media (max-width: 840px) {
+@media (max-width: 840px ) {
   #grid_p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -169,7 +169,7 @@ onMounted(fetchItems);
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   #grid_p {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
