@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full">
+  <div id="catalog" class="h-full md:hidden mb-[70px]">
     <div v-for="(category, index) in categories" :key="index" class="w-full px-3">
       <p
         class="font-medium py-[10px] px-4 text-black cursor-pointer max-md:text-sm border-b flex justify-between"
@@ -64,5 +64,17 @@ const isCategorySelected = (index) => {
 .rotate-90 {
   transform: rotate(90deg);
   transition: transform 0.3s;
+}
+
+@media (max-width: 1015px) {
+  #catalog {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  #catalog {
+    display: block
+  }
 }
 </style>

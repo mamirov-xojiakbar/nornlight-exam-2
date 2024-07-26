@@ -1,5 +1,8 @@
 <template>
-  <div id="hdn" class="md:mt-[150px] md:container mt-[50px] h-[180px] md:h-full">
+  <div
+    id="hdn"
+    class="md:mt-[150px] md:container mt-[50px] h-[180px] md:h-full"
+  >
     <swiper
       :slidesPerView="1"
       :spaceBetween="30"
@@ -16,21 +19,28 @@
       class="mySwiper"
     >
       <swiper-slide v-for="item in 5" :key="item">
-        <img src="https://images.uzum.uz/cqav62cqvss6ad8i8ihg/main_page_banner.jpg" alt="AA" class="rounded-[20px]">
+        <img
+          src="https://images.uzum.uz/cqav62cqvss6ad8i8ihg/main_page_banner.jpg"
+          alt="AA"
+          class="rounded-[20px]"
+        />
       </swiper-slide>
     </swiper>
+
+    <button @click="test">test</button>
   </div>
 </template>
 
 <script setup>
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/autoplay";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import 'swiper/css/autoplay'
+import { Pagination, Navigation, Autoplay } from 'swiper/modules'
 
-const modules = [Pagination, Navigation, Autoplay];
+
+const modules = [Pagination, Navigation, Autoplay]
 </script>
 
 <style scoped>
