@@ -20,6 +20,7 @@
     "swiper": "^11.1.4",
     "vue": "^3.4.29",
     "vue-router": "^4.0.13",
+    "vue-slick-carousel": "^1.0.6",
     "vue2-touch-events": "^3.2.3",
     "vue3-toastify": "^0.2.2"
   },
