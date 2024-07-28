@@ -92,8 +92,4 @@ const selectCategory = (index) => {
   border-radius: 10px;
 }
 
-/* Handle on hover */
-/* ::-webkit-scrollbar-thumb:hover {
-  background: rgb(97, 108, 232); 
-} */
 </style>

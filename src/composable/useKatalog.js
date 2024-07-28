@@ -91,14 +91,6 @@ export const useKatalog = () => {
       Размер: "L",
       Страна: "Швейцария",
       Производитель: "Scott",
-      Покрышки:
-        "Schwalbe Rocket Ron EVO / 2.1 127EPI Kevlar Bead Tubeless Easy / PaceStar compound",
-      Рама: "Scale Carbon / HMX-технология / технология IMP / Коническая рулевая труба / BB92 / Технология SDS / Дропауты IDS SL",
-      "Подседельный Штырь":
-        "Ritchey WCS 700 Series: Carbon Link FlexLogic / 31.6mm 900 Series: Carbon 2B SDS / 34.9mm",
-      Седло: "Ritchey WCS Streem V3 Titanium rails",
-      Вилка:
-        "Rock Shox SID RL3 Air / демпфер DNA3 3-режима / 15mm QR axle / коническая рулевая труба / Удалённая блокировка, регулировка отскока / ход 100mm",
     },
   ];
   return {

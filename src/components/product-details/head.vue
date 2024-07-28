@@ -1,20 +1,41 @@
 <template>
-  <div class="container mt-[150px] md:mt-[200px] mb-[181px]">
+  <div class="container mt-[150px] md:mt-[200px] mb-[111px]">
     <div v-if="!product" class="text-center text-gray-600 mt-4 mb-[40px]">
       No products found.
     </div>
     <div v-else>
-      <div class="md:flex gap-[30px]">
-        <div class="flex flex-col gap-[20px]">
-          <img v-for="img in product.images" :src="img" :key="img" alt="Thumbnail Image" @click="swapImage(img)" class="rounded-[10px] w-[150px]">
+      <div class="md:flex gap-[20px]">
+        <div id="1" class="flex flex-col gap-[15px] sticky-container">
+          <img
+            v-for="img in product.images"
+            :src="img"
+            :key="img"
+            alt="Thumbnail Image"
+            @click="swapImage(img)"
+            class="rounded-[10px] w-[100px] h-[88px]"
+          />
+          <div @click="swapToVideo" class="rounded-[10px] w-[100px] h-[88px] cursor-pointer bg-gray-300 flex items-center justify-center">
+            <span class="text-sm">Watch Video</span>
+          </div>
         </div>
-        <img :src="mainImage" alt="Product Image" class="md:w-[550px] md:h-[500px] w-full mb-[40px] md:mb-0 rounded-[20px]">
-        <div class="md:w-[650px]">
-          <p class="font-bold text-[30px] leading-[44px] mb-[10px]">{{ product.title }}</p>
-
+        <div id="2" class="relative md:w-[430px] md:h-[500px] w-full mb-[40px] md:mb-0 rounded-[20px]">
+          <img
+            v-if="!isVideo"
+            :src="mainImage"
+            alt="Product Image"
+            class="w-full h-full object-cover rounded-[20px]"
+          />
+          <video
+            v-if="isVideo"
+            controls
+            class="w-full h-full object-cover rounded-[20px]"
+            :src="videoUrl"
+          ></video>
+        </div>
+        <div id="3" class="md:w-[750px] scroll-container pr-3 pb-5">
+          <p class="font-bold text-[30px] leading-[44px] mb-[20px]">{{ product.title }}</p>
           <p class="font-medium text-[14px] leading-[22.4px] opacity-[50%]">Scott</p>
-
-          <div class="flex items-center justify-between mt-[5px] mb-[5px]">
+          <div class="flex items-center justify-between mt-[10px] mb-[10px]">
             <p class="font-medium text-[14px] leading-[22.4px] opacity-[50%]">Артикул : 7655-188</p>
             <div class="flex gap-2">
               <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] px-[12px] py-[5px] flex items-center justify-center rounded-[50%]">
@@ -34,25 +55,16 @@
               </a>
             </div>
           </div>
-
           <p class="font-medium text-[16px] leading-[25.6px] text-[#4D932C] mb-[10px]">В наличии</p>
-
-          <div class="flex mb-[10px] items-center gap-[20px]">
+          <div class="flex mb-[20px] items-center gap-[20px]">
             <p class="font-medium text-[40px] leading-[64px]">${{ (product.unitPrice * product.quantity).toFixed(2) }}</p>
             <p class="font-medium text-[18px] leading-[28.8px] opacity-[50%] line-through mt-3">${{ product.sale }}</p>
           </div>
-
           <p class="font-normal text-[16px] leading-[25.6px] mb-[48px]">
             Профессиональный гоночный хардтейл для кросс-кантри уровня Чемпионата и Кубка Мира. 
             Одна из самых легких рам среди гоночных хардтейлов для кросс-кантри.
           </p>
-
-          <div class="flex gap-[16px]">
-            <div class="flex gap-[32px] items-center px-[16px] border rounded-[10px] w-[130px]">
-              <button @click="minus(product.id)" class="font-medium text-[16px] leading-[19.68px]">-</button>
-              <p class="font-medium text-[16px] leading-[19.68px]">{{ product.quantity }}</p>
-              <button @click="plus(product.id)" class="font-medium text-[16px] leading-[19.68px]">+</button>
-            </div>
+          <div class="flex gap-[16px] mb-[30px]">
             <button @click="clickKarzina(product.id)" class="bg-[#454545] hidden md:block rounded-[10px] px-[80px] text-white">Корзину</button>
             <button @click="toggleLike(product.id)" class="border px-[14px] py-[14px] rounded-[10px]">
               <svg v-if="isLiked(product.id)" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 48 48" class="animate-svg">
@@ -60,6 +72,11 @@
               </svg>
               <svg v-else xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 48 48"><path fill="none" stroke="#5d5b5b" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8"/></svg>
             </button>
+          </div>
+          <p class="font-medium text-[20px] leading-[44px] mb-[13px]">Характеристика</p>
+          <div v-for="(entry, i) in processedXarakteristika" :key="i" class="grid md:grid-cols-2 py-[9px] items-center">
+            <p class="font-medium text-[14px] leading-[19.68px] mb-2 md:mb-0">{{ entry.key }}</p>
+            <p class="flex md:justify-end md:text-end font-light text-[15px] leading-[20.8px] opacity-[70%]">{{ entry.value }}</p>
           </div>
         </div>
       </div>
@@ -71,9 +88,19 @@
 import { ref, reactive, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { usePiniaStore } from '../../store/pinia';
+import { useKatalog } from "../../composable/useKatalog";
+import { computed } from "vue";
+
+const { xarakteristika } = useKatalog();
 
 const store = usePiniaStore();
 const route = useRoute();
+
+const processedXarakteristika = computed(() => {
+  return xarakteristika.flatMap(item => 
+    Object.entries(item).map(([key, value]) => ({ key, value }))
+  );
+});
 
 const product = reactive({
   id: '',
@@ -83,10 +110,13 @@ const product = reactive({
   quantity: 1,
   unitPrice: 0,
   sale: 0,
-  images: ['/blog-1.png', '/blog-2.png', '/blog-3.png'] 
+  images: ['/blog-1.png', '/blog-2.png', '/blog-3.png'],
+  video: 'https://www.w3schools.com/html/mov_bbb.mp4'  // External video URL
 });
 
 const mainImage = ref('');
+const isVideo = ref(false);
+const videoUrl = ref('');
 
 onMounted(() => {
   const productId = route.params.id;
@@ -136,7 +166,13 @@ const isLiked = (productId) => {
 };
 
 const swapImage = (imgSrc) => {
+  isVideo.value = false;
   mainImage.value = imgSrc;
+};
+
+const swapToVideo = () => {
+  isVideo.value = true;
+  videoUrl.value = product.video;
 };
 </script>
 
@@ -155,5 +191,27 @@ const swapImage = (imgSrc) => {
 
 .animate-svg {
   animation: heart-beat 0.6s ease-in-out;
+}
+.sticky-container {
+  position: sticky;
+  top: 0;
+}
+
+.scroll-container {
+  height: 500px; 
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(173, 173, 173); 
+  border-radius: 10px;
 }
 </style>
