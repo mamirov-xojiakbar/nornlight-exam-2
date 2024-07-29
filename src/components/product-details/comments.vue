@@ -1,7 +1,8 @@
 <template>
-  <div class="container mb-[40px]">
+  <div class="md:container mb-[40px]">
     <h2 class="text-2xl font-bold mb-6">Mahsulot sharhlari</h2>
-    <div class="grid grid-cols-4 gap-5">
+    <!-- Desktop -->
+    <div id="comment" class="grid grid-cols-4 gap-5">
         <div v-for="(comment, index) in displayedComments" :key="index">
           <div class="p-4 border rounded-lg md:h-[170px] h-[140px]">
             <div class="flex justify-between items-center mb-2">
@@ -14,6 +15,8 @@
           </div>
         </div>
     </div>
+
+
     <button    
       v-if="displayedComments.length < comments.length" 
       @click="loadMore" 
@@ -52,4 +55,30 @@ const loadMore = () => {
 
 <style scoped>
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+@media (max-width: 840px ) {
+  #comment {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #text {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  #comment {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #text {
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 840px) {
+  #comment {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 </style>

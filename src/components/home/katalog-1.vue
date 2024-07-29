@@ -106,7 +106,7 @@ const loading = ref(true);
 const limit = ref(8);
 
 const breakpoints = {
-  400: {
+  360: {
     slidesPerView: 2,
     spaceBetween: 15,
   },
