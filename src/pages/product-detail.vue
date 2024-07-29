@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="px-[10px] md:px-0">
         <Head />
         <Katalog_1 />
         <Comments />
