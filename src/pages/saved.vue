@@ -1,5 +1,5 @@
 <template>
-  <div id="mt" class="md:container px-[10px] mb-[50px]">
+  <div id="mt" class="px-[10px] mb-[50px] mt-[20px]">
     <div class="flex">
       <p id="text" class="font-bold text-[20px] md:text-[44px] md:leading-[70.4px] md:mb-[34px] mb-[20px]">Избранные товары</p>
       <p class="bg-red-500 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%] ml-4">{{ likedProductCount }}</p>
@@ -65,7 +65,7 @@ const isLiked = (productId) => {
 const toggleLike = (productId) => {
   if (isLiked(productId)) {
     store.removeFromLikedProducts(productId);
-  } else {
+  } else {   
     store.addToLikedProducts(productId);
   }
 };
@@ -124,6 +124,8 @@ const toggleLike = (productId) => {
 @media (min-width: 1015px) {
   #mt {
     margin-top: 120px;
+    padding-left: 90px;
+    padding-right: 90px;
   }
 }
 </style>
