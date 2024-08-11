@@ -6,8 +6,10 @@
     </div>
 
     <div>
-      <div v-if="getKarzinaProducts.length === 0" class="text-center text-gray-600 mt-4 mb-[40px]">
-        Корзина пуста.
+      <div v-if="getKarzinaProducts.length === 0" class="text-center mt-4 mb-[100px]">
+        <p class="text-[20px] font-bold mb-[20px]">Savatda hozircha mahsulot yoʻq</p>
+
+        <router-link to="/" class="bg-gray-600 text-white px-[40px] py-[10px] rounded-[10px]">Bosh sahifa</router-link>
       </div>
 
       <div v-else class="mb-[93px] flex gap-5">
@@ -43,11 +45,14 @@
 
       </div>
     </div>
+
+    <OfferedProducts />
   </div>
 </template>
 
 
 <script setup>
+import OfferedProducts from '../components/home/offered-products.vue';
 import { usePiniaStore } from '../store/pinia';
 import { computed, ref } from 'vue';
 
