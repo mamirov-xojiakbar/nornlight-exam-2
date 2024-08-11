@@ -25,7 +25,7 @@
         
         <router-link :to="{ name: 'product-detail', params: { id: item.id } }">
           <div class="md:h-[300px] h-[230px] rounded-[10px] flex ">
-            <img :src="item.img" alt="Img" class="rounded-[20px]">
+            <img :src="item.img" alt="Img" class="rounded-[20px] object-cover">
           </div>
           <p class="font-medium text-[13px] leading-[20px] mt-[12px] mx-[10px]">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
           <p class="line-through mt-[24px] opacity-[70%] font-medium text-[12px] leading-[13.2px] absolute bottom-[50px] left-[10px]">${{ item.sale }}</p>

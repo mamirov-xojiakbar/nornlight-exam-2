@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-[140px]">
     <div class="flex">
-      <p class="font-bold text-[40px] md:text-[64px] md:leading-[70.4px] md:mb-[34px]">Корзина</p>
+      <p class="font-bold text-[20px] md:text-[34px] md:leading-[70.4px] md:mb-[34px]">Корзина</p>
       <p class="bg-red-500 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%] ml-4">{{ karzinaCount }}</p>
     </div>
 
@@ -10,75 +10,42 @@
         Корзина пуста.
       </div>
 
-      <div v-else class="mt-[36px] mb-[93px]">
-        <div class="bg-[#F2F2F2] mb-[20px] rounded-[20px] px-[46px] py-[40px] w-[100%]">
-          <div class="md:flex hidden pb-[28px] border-b font-medium text-[16px] leading-[21.86px] opacity-[50%]">
-            <p class="mr-[80px]">Фото</p>
-            <p class="mr-[180px]">Товары</p>
-            <p class="mr-[253px]">Описание</p>
-            <p class="mr-[240px]">Артикул</p>
-            <p>Количество</p>
-          </div>
-
-          <div v-for="product in getKarzinaProducts" :key="product.id" class="md:flex relative items-start pb-[20px] mt-[33px] border-b">
-            <div class="flex w-[300px]">
-              <img :src="product.img" alt="Product Image" class="md:w-[80px] md:h-[80px] w-[48px] h-[48px] mr-[37px]">
+      <div v-else class="mb-[93px] flex gap-5">
+        <div class="bg-[#F2F2F2] rounded-[20px] px-[46px] py-[25px] w-[73%] h-full">
+          <div v-for="product in getKarzinaProducts" :key="product.id" class="md:flex items-start pb-[20px] mt-[33px] border-b justify-between">
+            <div class="flex w-[40%]">
+              <img :src="product.img" alt="Product Image" class="md:w-[80px] md:h-[110px] w-[48px] h-[48px] mr-[37px] object-cover">
               <div>
-                <p class="font-semibold text-[16px] leading-[20.8px] mb-[10px] md:mb-[20px]">{{ product.title }}</p>
-                <p class="font-bold text-[20px] leading-[22px]">${{ (product.unitPrice * product.quantity).toFixed(2) }}</p>
+                <p class="font-medium text-[14px] mb-[10px] md:mb-[20px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem, modi.</p>
+                <p class="font-bold text-[18px] leading-[22px] opacity-[80%]">${{ (product.unitPrice * product.quantity).toFixed(2) }}</p>
               </div>
             </div>
-            <div class="md:flex ml-[85px] md:mt-0 mt-[10px] md:ml-[150px] items-start">
-              <p class="md:w-[20%] font-normal text-[16px] leading-[20.8px]">Светильник RADUGA COMBO XS Промышленное освещение; 50Вт; 230В; S4; XS;</p>
-              <p class="mt-[20px] md:mt-0 md:w-[20%] font-normal text-[16px] leading-[20.8px] md:ml-[160px]">RAD-COMBO-50/XXX/230/XXX/XXX/S4/XS</p>
-              <div class="flex items-center md:ml-[120px] mt-[20px] md:mt-0">
-                <button @click="minus" class="px-2 font-medium text-[24px] leading-[32.78px]">-</button>
-                <p class="font-medium text-[16px] leading-[21px] border border-opacity-[10%] py-[19px] px-[27px] rounded-[10px]">{{ count }}</p>
-                <button @click="plus" class="px-2 font-medium text-[20px] leading-[27px]">+</button>
-              </div>
-              <button @click="remove(product.id)" class="absolute right-5 bottom-8 md:bottom-[80px]">
-                <img src="/delete.png" alt="">
-              </button>
+            
+            <div class="flex items-center mt-0 border rounded-[10px] px-5">
+              <button @click="" class="font-medium text-[24px] leading-[32.78px]">-</button>
+              <p class="font-medium text-[16px] leading-[21px] py-[15px] px-[27px]">{{ count }}</p>
+              <button @click="" class="font-medium text-[20px] leading-[27px]">+</button>
             </div>
+            
+            
+            <button @click="remove(product.id)" class="flex items-center opacity-[50%] hover:opacity-[100%] duration-150 gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="#454545" d="M14.28 2a2 2 0 0 1 1.897 1.368L16.72 5H20a1 1 0 1 1 0 2l-.003.071l-.867 12.143A3 3 0 0 1 16.138 22H7.862a3 3 0 0 1-2.992-2.786L4.003 7.07L4 7a1 1 0 0 1 0-2h3.28l.543-1.632A2 2 0 0 1 9.721 2zm3.717 5H6.003l.862 12.071a1 1 0 0 0 .997.929h8.276a1 1 0 0 0 .997-.929zM10 10a1 1 0 0 1 .993.883L11 11v5a1 1 0 0 1-1.993.117L9 16v-5a1 1 0 0 1 1-1m4 0a1 1 0 0 1 1 1v5a1 1 0 1 1-2 0v-5a1 1 0 0 1 1-1m.28-6H9.72l-.333 1h5.226z"/></g></svg>
+              <p class="font-bold">Delete</p>
+            </button>
           </div>
         </div>
 
-        <div class="bg-[#F2F2F2] px-[48px] pt-[45px] pb-[99px] mb-[58px] rounded-[20px]">
-          <p class="font-bold text-[32px] leading-[35.2px] mb-[31px]">Оформление</p>
-
-          <div class="grid md:grid-cols-3 gap-[20px] font-semibold text-[16px] leading-[20px] pb-[37px] border-b">
-            <input v-model="fullName" type="text" placeholder="ФИО" class="py-[15px] px-[20px] rounded-[100px] bg-[#F2F2F2] border border-[#454545]">
-            <input v-model="phone" type="text" placeholder="Телефон" class="py-[15px] px-[20px] rounded-[100px] bg-[#F2F2F2] border border-[#454545]">
-            <input v-model="email" type="text" placeholder="Электронная почта" class="py-[15px] px-[20px] rounded-[100px] bg-[#F2F2F2] border border-[#454545]">
-          </div>
-          <p class="mt-[37px] font-bold text-[32px] leading-[35.2px] mb-[31px]">Доставка</p>
-          <div class="grid grid-cols-1 md:w-[67%]">
-            <input v-model="adress" type="text" placeholder="Адрес" class="mb-[31px] py-[15px] px-[20px] rounded-[100px] bg-[#F2F2F2] border border-[#454545]">
-            <textarea v-model="comment" placeholder="Комментарий" class="py-[15px] px-[20px] rounded-[26px] resize-none h-[150.87px] bg-[#F2F2F2] border border-[#454545]"></textarea>
-          </div>
+        <div class="bg-[#F2F2F2] px-[48px] py-[31px] rounded-[20px] sticky top-[130px] h-full">
+          <p class="font-bold text-[22px] leading-[35.2px] mb-[10px]">Jami summa:</p>
+          <p class="font-bold text-[20px] leading-[26.4px] mb-[28px] text-[#454545]">{{ totalPrice }}₽</p>
+          <button @click="buy" class=" bg-[#454545] text-white px-[35px] py-[14px] rounded-[100px]">Rasmiylashtrish</button>  
         </div>
 
-        <div class="bg-[#F2F2F2] px-[48px] pt-[45px] pb-[52px] mb-[80px] rounded-[20px]">
-          <p class="font-bold text-[32px] leading-[35.2px] mb-[31px]">Оплата</p>
-          <div class="md:flex md:gap-[40px] mb-[69px] w-[100%]">
-            <p class="font-medium text-[16px] leading-[20.8px] opacity-[50%] mb-[20px] md:mb-0">Товары........................................{{ totalProductsPrice }}₽</p>
-            <p class="font-medium text-[16px] leading-[20.8px] opacity-[50%]">Доставка........................................580₽</p>
-          </div>
-          <p class="font-bold text-[24px] leading-[26.4px] mb-[28px] text-[#454545]">{{ totalPrice }}₽</p>
-          <div class="md:flex items-center">
-            <button @click="buy" class="md:mr-[24px] bg-[#454545] text-white w-full md:w-[30%] md:px-[135px] py-[14px] rounded-[100px]">Купить</button>
-            <div class="flex mt-[21px] md:mt-0">
-              <p class="border border-black py-[5px] px-[4px] rounded-[50%] mr-[7px] md:block hidden">
-                <img src="/check.png" alt="">
-              </p>
-              <p class="font-semibold text-[12px] leading-[15.6px] opacity-[50%]">Я согласен на обработку моих персональных данных</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { usePiniaStore } from '../store/pinia';
