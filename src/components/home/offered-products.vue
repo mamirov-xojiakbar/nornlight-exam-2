@@ -1,6 +1,6 @@
 <template>
     <div class="mx-auto">
-      <p class="md:text-[30px] text-[23px] font-bold flex items-center gap-1 mb-[40px]">
+      <p id="text" class="md:text-[30px] text-[23px] font-bold flex items-center gap-1 mb-[40px]">
         Bu mahsulot bilan quyidagilar xarid qilinadi:
       </p>
   
@@ -211,6 +211,12 @@ display: block;
 .swiper-slide {
     height: 400px !important;
 }
+}
+
+@media (max-width: 1015px) {
+  #text {
+    font-size: 20px;
+  }
 }
 </style>
   

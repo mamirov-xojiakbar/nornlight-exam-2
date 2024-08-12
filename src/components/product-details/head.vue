@@ -38,23 +38,6 @@
           <p class="font-medium text-[14px] leading-[22.4px] opacity-[50%]">Scott</p>
           <div class="flex items-center justify-between mt-[10px] mb-[10px]">
             <p class="font-medium text-[14px] leading-[22.4px] opacity-[50%]">Артикул : 7655-188</p>
-            <div class="flex gap-2">
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] px-[12px] py-[5px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw.png" alt="">
-              </a>
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] p-[9px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw-2.png" alt="">
-              </a>
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] p-[9px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw-3.png" alt="">
-              </a>
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] p-[9px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw-4.png" alt="">
-              </a>
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] p-[9px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw-5.png" alt="">
-              </a>
-            </div>
           </div>
           <p class="font-medium text-[16px] leading-[25.6px] text-[#4D932C] mb-[10px]">В наличии</p>
           <div class="flex mb-[20px] items-center gap-[20px]">
@@ -108,27 +91,10 @@
         </swiper>
 
         <div id="3" class="md:w-[750px]  pr-3 pb-5">
-          <p class="font-bold text-[30px] leading-[44px] mb-[20px]">{{ product.title }}</p>
+          <p class="font-bold text-[30px] leading-[44px] mb-[20px] mt-[20px]">{{ product.title }}</p>
           <p class="font-medium text-[14px] leading-[22.4px] opacity-[50%]">Scott</p>
           <div class="flex items-center justify-between mt-[10px] mb-[10px]">
             <p class="font-medium text-[14px] leading-[22.4px] opacity-[50%]">Артикул : 7655-188</p>
-            <div class="flex gap-2">
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] px-[12px] py-[5px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw.png" alt="">
-              </a>
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] p-[9px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw-2.png" alt="">
-              </a>
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] p-[9px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw-3.png" alt="">
-              </a>
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] p-[9px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw-4.png" alt="">
-              </a>
-              <a href="#" class="hover:bg-[#4C4C4C] bg-[#E5E5E5] p-[9px] flex items-center justify-center rounded-[50%]">
-                <img src="/sw-5.png" alt="">
-              </a>
-            </div>
           </div>
           <p class="font-medium text-[16px] leading-[25.6px] text-[#4D932C] mb-[10px]">В наличии</p>
           <div class="flex mb-[20px] items-center gap-[20px]">
