@@ -1,7 +1,7 @@
 <template>
   <div id="mt" class="px-[10px] mb-[50px] mt-[20px]">
     <div class="flex">
-      <p id="text" class="font-bold text-[20px] md:text-[44px] md:leading-[70.4px] md:mb-[34px] mb-[20px]">Избранные товары</p>
+      <p id="text" class="font-bold text-[20px] md:text-[30px] md:leading-[70.4px] md:mb-[34px] mb-[20px]">Избранные товары</p>
       <p class="bg-red-500 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%] ml-4">{{ likedProductCount }}</p>
     </div>
 
@@ -93,9 +93,6 @@ const toggleLike = (productId) => {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-  #text {
-    font-size: 30px;
-  }
   #mt {
     margin-top: 20px;
   }
@@ -105,9 +102,6 @@ const toggleLike = (productId) => {
   #grid_p {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  }
-  #text {
-    font-size: 23px;
   }
   #mt {
     margin-top: 20px;

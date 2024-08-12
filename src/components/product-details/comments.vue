@@ -17,13 +17,15 @@
     </div>
 
 
-    <button    
-      v-if="displayedComments.length < comments.length" 
-      @click="loadMore" 
-      class="mt-6 py-2 px-4 bg-[#4C4C4C] text-white font-semibold rounded-lg"
-    >
-      Ko'proq ko'rsatish
-    </button>
+    <div class="flex justify-center">
+      <button    
+        v-if="displayedComments.length < comments.length" 
+        @click="loadMore" 
+        class="mt-6 py-2 px-4 bg-[#4C4C4C] text-white font-semibold rounded-lg"
+      >
+        Ko'proq ko'rsatish
+      </button>
+    </div>
   </div>
 </template>
 

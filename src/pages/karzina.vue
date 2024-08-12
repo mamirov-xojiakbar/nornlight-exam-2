@@ -1,7 +1,7 @@
 <template>
   <div id="container" class="mt-[140px] container">
     <div class="flex">
-      <p class="font-bold text-[20px] md:text-[34px] md:leading-[70.4px] mb-[34px]">Корзина</p>
+      <p class="font-bold text-[20px] md:text-[30px] md:leading-[70.4px] mb-[34px]">Корзина</p>
       <p class="bg-red-500 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%] ml-4">{{ karzinaCount }}</p>
     </div>
 
@@ -44,7 +44,7 @@
           <button @click="buy" class=" bg-[#454545] text-white px-[35px] py-[14px] rounded-[100px]">Rasmiylashtrish</button>  
         </div>
         <!-- End desktop -->
-
+ 
 
         <!-- Mobile -->
         <div id="mobile" class="bg-[#F2F2F2] rounded-[20px] px-[36px] py-[25px] w-full h-full hidden">
@@ -72,6 +72,14 @@
             
             
           </div>
+        </div>
+
+        <div id="mobile2" class="bg-gray-300 px-[20px] py-[11px] fixed bottom-[62px] left-0  w-full justify-between z-50 hidden">
+          <div>
+            <p class="font-bold text-[17px] mb-[5px]">Jami summa:</p>
+            <p class="font-bold text-[18px] text-[#454545]">{{ totalPrice }}₽</p>
+          </div>
+          <button @click="buy" class=" bg-[#454545] text-white px-[20px] h-[40px] rounded-[5px] text-[15px]">Rasmiylashtrish</button>  
         </div>
         <!-- End mobile -->
       </div>
@@ -151,12 +159,15 @@ const buy = () => {
   #mobile {
     display: block
   }
+  #mobile2 {
+    display: flex
+  }
   #container {
     padding-right: 10px;
     padding-left: 10px;
     margin-top: 30px;
   }
-
+  
 }
 
 /* @media (max-width: 640px) {

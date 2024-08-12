@@ -1,7 +1,7 @@
 <template>
   <div id="as" class="md:container md:mb-[50px] md:mt-[100px] mb-[30px] mt-[20px]">
     <div class="flex justify-between mb-[40px]">
-      <p id="text" class="font-bold md:text-[40px] md:leading-[54.64px] text-[20px]">Популярные товары</p>
+      <p id="text" class="font-bold md:text-[30px] md:leading-[54.64px] text-[20px]">Популярные товары</p>
       <router-link to="/all-products" class="md:flex hidden items-center border border-[#454545] py-[14px] px-[48px] rounded-[100px] gap-3">
         <p class="font-medium text-[16px] leading-[21.86px]">Все товары</p>
         <img src="/strelka.png" alt="">
@@ -164,18 +164,12 @@ onMounted(fetchItems);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-  #text {
-    font-size: 30px;
-  }
 }
 
 @media (max-width: 600px) {
   #grid_p {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  }
-  #text {
-    font-size: 23px;
   }
 }
 

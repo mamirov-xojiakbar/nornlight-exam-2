@@ -1,6 +1,6 @@
 <template>
   <div class="md:container mx-auto">
-    <router-link to="#" class="md:text-[30px] text-[23px] font-bold flex items-center gap-1 mb-[40px]">
+    <router-link to="#" class="md:text-[30px] text-[20px] font-bold flex items-center gap-1 mb-[40px]">
       Catalog
       <svg xmlns="http://www.w3.org/2000/svg" class="mt-[6px]" width="1em" height="1em" viewBox="0 0 24 24">
         <g fill="none" fill-rule="evenodd">
