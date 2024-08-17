@@ -41,7 +41,7 @@
         <div id="k2"class="bg-[#F2F2F2] px-[48px] py-[31px] rounded-[20px] sticky top-[130px] h-full">
           <p class="font-bold text-[22px] leading-[35.2px] mb-[10px]">Jami summa:</p>
           <p class="font-bold text-[20px] leading-[26.4px] mb-[28px] text-[#454545]">{{ totalPrice }}₽</p>
-          <button @click="buy" class=" bg-[#454545] text-white px-[35px] py-[14px] rounded-[100px]">Rasmiylashtrish</button>  
+          <router-link to="/create-order" class=" bg-[#454545] text-white px-[35px] py-[14px] rounded-[100px]">Rasmiylashtrish</router-link>  
         </div>
         <!-- End desktop -->
  
@@ -79,7 +79,7 @@
             <p class="font-bold text-[17px] mb-[5px]">Jami summa:</p>
             <p class="font-bold text-[18px] text-[#454545]">{{ totalPrice }}₽</p>
           </div>
-          <button @click="buy" class=" bg-[#454545] text-white px-[20px] h-[40px] rounded-[5px] text-[15px]">Rasmiylashtrish</button>  
+          <router-link to="/create-order" class=" bg-[#454545] text-white px-[20px] h-[40px] rounded-[5px] text-[15px]">Rasmiylashtrish</router-link>  
         </div>
         <!-- End mobile -->
       </div>

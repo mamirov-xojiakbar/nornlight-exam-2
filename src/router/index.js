@@ -79,6 +79,11 @@ const router = createRouter({
           path: '/catalog',
           name: 'catalog',
           component: () => import('../pages/mobile-katalog.vue')
+        },
+        {
+          path: '/create-order',
+          name: 'create-order',
+          component: () => import('../pages/create-order.vue')
         }
       ]
     },
