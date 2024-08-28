@@ -51,9 +51,9 @@
         </div>
 
         <div class="flex md:gap-6 gap-2">
-          <router-link to="#" class="md:flex hidden flex-col items-center">
+          <router-link to="/login" class="md:flex hidden flex-col items-center mt-[2px]">
             <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21c0-2.761-3.582-5-8-5s-8 2.239-8 5m8-8a5 5 0 1 1 0-10a5 5 0 0 1 0 10"/></svg>
-            <span class="font-semibold text-xs mt-2 hidden md:block">профиль</span>
+            <span class="font-semibold text-xs mt-[6px] hidden md:block">Kirish</span>
           </router-link>
 
           <router-link to="/saved" class="flex flex-col items-center mt-[2px]">
@@ -61,15 +61,15 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 48 48"><path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8"/></svg>
               <p v-if="likedProductCount > 0" class="bg-red-500 absolute bottom-2 left-4 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%]">{{ likedProductCount }}</p>
             </div>
-            <span class="font-semibold text-xs mt-[6px] hidden md:block">Избранное</span>
+            <span class="font-semibold text-xs mt-[6px] hidden md:block">Saralangan</span>
           </router-link>
 
-          <router-link to="/karzina" class="flex flex-col items-center">
+          <router-link to="/karzina" class="flex flex-col items-center mt-[2px]">
             <div class="relative">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 256 256"><path fill="black" d="M230.14 58.87A8 8 0 0 0 224 56H62.68L56.6 22.57A8 8 0 0 0 48.73 16H24a8 8 0 0 0 0 16h18l25.56 140.29a24 24 0 0 0 5.33 11.27a28 28 0 1 0 44.4 8.44h45.42a27.75 27.75 0 0 0-2.71 12a28 28 0 1 0 28-28H91.17a8 8 0 0 1-7.87-6.57L80.13 152h116a24 24 0 0 0 23.61-19.71l12.16-66.86a8 8 0 0 0-1.76-6.56M104 204a12 12 0 1 1-12-12a12 12 0 0 1 12 12m96 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12m4-74.57a8 8 0 0 1-7.9 6.57H77.22L65.59 72h148.82Z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 256 256"><path fill="black" d="M230.14 58.87A8 8 0 0 0 224 56H62.68L56.6 22.57A8 8 0 0 0 48.73 16H24a8 8 0 0 0 0 16h18l25.56 140.29a24 24 0 0 0 5.33 11.27a28 28 0 1 0 44.4 8.44h45.42a27.75 27.75 0 0 0-2.71 12a28 28 0 1 0 28-28H91.17a8 8 0 0 1-7.87-6.57L80.13 152h116a24 24 0 0 0 23.61-19.71l12.16-66.86a8 8 0 0 0-1.76-6.56M104 204a12 12 0 1 1-12-12a12 12 0 0 1 12 12m96 0a12 12 0 1 1-12-12a12 12 0 0 1 12 12m4-74.57a8 8 0 0 1-7.9 6.57H77.22L65.59 72h148.82Z"/></svg>
               <p v-if="karzinaCount > 0" class="bg-red-500 absolute bottom-3 left-4 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%]">{{ karzinaCount }}</p>
             </div>
-            <span class="font-semibold text-xs mt-[6px] hidden md:block">Корзина</span>
+            <span class="font-semibold text-xs mt-[6px] hidden md:block">Savat</span>
           </router-link>
         </div>
       </div>

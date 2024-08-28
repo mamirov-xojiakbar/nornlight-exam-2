@@ -120,7 +120,27 @@ const router = createRouter({
           component: () => import('../pages/admin/create-category.vue')
         }
       ]
-    }
+    },
+
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../pages/login.vue')
+    },
+
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../pages/register.vue')
+    },
+
+    {
+      path: '/payment',
+      name: 'payment',
+      component: () => import('../pages/payment.vue')
+    },
+    
+    
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
