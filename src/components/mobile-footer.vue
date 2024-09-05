@@ -33,8 +33,8 @@
         <p class="text-[13px]">Saralangan</p>
         <p v-if="likedProductCount > 0" class="bg-red-500 absolute bottom-2/1  left-1/2 w-[17px] h-[17px] flex items-center justify-center text-white rounded-[50%]">{{ likedProductCount }}</p>
       </router-link>
-      <router-link to="/" class="flex flex-col items-center">
-        <svg v-if="isActiveRoute('#')" xmlns="http://www.w3.org/2000/svg" width="1.38em" height="1.5em" viewBox="0 0 448 512">
+      <router-link to="/profile" class="flex flex-col items-center">
+        <svg v-if="isActiveRoute('/profile')" xmlns="http://www.w3.org/2000/svg" width="1.38em" height="1.5em" viewBox="0 0 448 512">
           <path fill="black" d="M224 256a128 128 0 1 0 0-256a128 128 0 1 0 0 256m-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512h388.6c16.4 0 29.7-13.3 29.7-29.7c0-98.5-79.8-178.3-178.3-178.3z"/>
         </svg>
         <svg v-else xmlns="http://www.w3.org/2000/svg" width="1.38em" height="1.5em" viewBox="0 0 448 512"><path fill="black" d="M304 128a80 80 0 1 0-160 0a80 80 0 1 0 160 0m-208 0a128 128 0 1 1 256 0a128 128 0 1 1-256 0M49.3 464h349.5c-8.9-63.3-63.3-112-129-112h-91.4c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4c98.5 0 178.3 79.8 178.3 178.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3"/></svg>
