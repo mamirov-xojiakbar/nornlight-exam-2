@@ -303,7 +303,7 @@ notifications: [
     { id: 1, message: 'Your order has been shipped!', date: '2024-03-05' },
     { id: 2, message: 'Your review was approved.', date: '2024-03-10' },
 ],
-});
+});  
 
 const editedUser = ref({ ...user.value });
 const isModalOpen = ref(false);
