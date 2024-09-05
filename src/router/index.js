@@ -84,6 +84,11 @@ const router = createRouter({
           path: '/create-order',
           name: 'create-order',
           component: () => import('../pages/create-order.vue')
+        },
+        {
+          path: '/profile',
+          name: 'profile',
+          component: () => import('../pages/profile.vue')
         }
       ]
     },
@@ -140,6 +145,11 @@ const router = createRouter({
       component: () => import('../pages/payment.vue')
     },
     
+    {
+      path: '/about-payment',
+      name: 'about-payment',
+      component: () => import('../pages/about-payment.vue')
+    },
     
   ],
   scrollBehavior(to, from, savedPosition) {

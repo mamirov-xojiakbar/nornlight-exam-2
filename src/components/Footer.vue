@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#F2F2F2]">
+    <div class="bg-gray-100">
         <div class="container grid md:grid-cols-4 pt-[79px] pb-[80px] gap-[30px] md:gap-[100px]">
             <div class="flex flex-col">
                 <img src="/logo.png" alt="Logo img" class="mb-[50px] w-[235px]">
