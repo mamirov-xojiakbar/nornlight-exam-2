@@ -39,7 +39,7 @@
               <h3 class="text-xl font-semibold text-gray-700 mb-4">Orders</h3>
               <ul class="space-y-4">
                 <li
-                  v-for="order in user.orders"
+                  v-for="order in displayedOrders"
                   :key="order.id"
                   class="p-4 bg-white rounded-lg shadow flex justify-between items-center"
                 >
@@ -50,13 +50,21 @@
                   <span class="text-blue-500 font-bold">{{ order.total }} USD</span>
                 </li>
               </ul>
+
+              <button    
+                v-if="displayedOrders.length < user.orders.length" 
+                @click="loadMore" 
+                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
+              >
+                More
+              </button>
             </div>
   
             <div class="bg-gray-50 p-4 rounded-lg shadow">
               <h3 class="text-xl font-semibold text-gray-700 mb-4">Reviews</h3>
               <ul class="space-y-4">
                 <li
-                  v-for="review in user.reviews"
+                  v-for="review in displayedReviews"
                   :key="review.id"
                   class="p-4 bg-white rounded-lg shadow"
                 >
@@ -80,13 +88,21 @@
                   </div>
                 </li>
               </ul>
+
+              <button    
+                v-if="displayedReviews.length < user.reviews.length" 
+                @click="loadMoreReviews" 
+                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
+              >
+                More
+              </button>
             </div>
   
             <div class="bg-gray-50 p-4 rounded-lg shadow col-span-1 md:col-span-2">
               <h3 class="text-xl font-semibold text-gray-700 mb-4">Notifications</h3>
               <ul class="space-y-4">
                 <li
-                  v-for="notification in user.notifications"
+                  v-for="notification in displayedNotifications"
                   :key="notification.id"
                   class="p-4 bg-white rounded-lg shadow flex justify-between items-center"
                 >
@@ -94,6 +110,13 @@
                   <span class="text-xs font-semibold text-gray-500">{{ notification.date }}</span>
                 </li>
               </ul>
+              <button    
+                v-if="displayedNotifications.length < user.notifications.length" 
+                @click="loadMoreNotification" 
+                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
+              >
+                More
+              </button>
             </div>
           </div>
         </div>
@@ -181,7 +204,7 @@
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Orders</h3>
             <ul class="space-y-4">
               <li
-                v-for="order in user.orders"
+                v-for="order in displayedOrders"
                 :key="order.id"
                 class="p-4 bg-white rounded-lg shadow flex justify-between items-center"
               >
@@ -192,13 +215,21 @@
                 <span class="text-blue-500 font-bold">{{ order.total }} USD</span>
               </li>
             </ul>
+
+            <button    
+                v-if="displayedOrders.length < user.orders.length" 
+                @click="loadMore" 
+                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
+              >
+                More
+            </button>
           </div>
 
           <div class="p-4">
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Reviews</h3>
             <ul class="space-y-4">
               <li
-                v-for="review in user.reviews"
+                v-for="review in displayedReviews"
                 :key="review.id"
                 class="p-4 bg-white rounded-lg shadow"
               >
@@ -222,6 +253,36 @@
                 </div>
               </li>
             </ul>
+
+            <button    
+                v-if="displayedReviews.length < user.reviews.length" 
+                @click="loadMoreReviews" 
+                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
+              >
+                More
+            </button>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg shadow col-span-1 md:col-span-2">
+              <h3 class="text-xl font-semibold text-gray-700 mb-4">Notifications</h3>
+              <ul class="space-y-4">
+                <li
+                  v-for="notification in displayedNotifications"
+                  :key="notification.id"
+                  class="p-4 bg-white rounded-lg shadow flex justify-between items-center"
+                >
+                  <p class="text-gray-700">{{ notification.message }}</p>
+                  <span class="text-xs font-semibold text-gray-500">{{ notification.date }}</span>
+                </li>
+              </ul>
+
+              <button    
+                v-if="displayedNotifications.length < user.notifications.length" 
+                @click="loadMoreNotification" 
+                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
+              >
+                More
+              </button>
           </div>
         </div>
       </div>
@@ -283,7 +344,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref,computed } from 'vue';
 
 const user = ref({
 name: 'John',
@@ -294,9 +355,27 @@ profilePicture: 'https://via.placeholder.com/150',
 orders: [
     { id: 1, date: '2024-01-15', total: 150 },
     { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
+    { id: 2, date: '2024-02-22', total: 230 },
 ],
 reviews: [
     { id: 1, productName: 'Product 1', comment: 'Great product!', rating: 4 },
+    { id: 2, productName: 'Product 2', comment: 'Not bad.', rating: 3 },
+    { id: 2, productName: 'Product 2', comment: 'Not bad.', rating: 3 },
+    { id: 2, productName: 'Product 2', comment: 'Not bad.', rating: 3 },
+    { id: 2, productName: 'Product 2', comment: 'Not bad.', rating: 3 },
+    { id: 2, productName: 'Product 2', comment: 'Not bad.', rating: 3 },
+    { id: 2, productName: 'Product 2', comment: 'Not bad.', rating: 3 },
     { id: 2, productName: 'Product 2', comment: 'Not bad.', rating: 3 },
 ],
 notifications: [
@@ -307,6 +386,33 @@ notifications: [
 
 const editedUser = ref({ ...user.value });
 const isModalOpen = ref(false);
+const ordersToShow = ref(4);
+const notificationsToShow = ref(4);
+const reviewsToShow = ref(3);
+
+const displayedOrders = computed(() => {
+  return user.value.orders.slice(0, ordersToShow.value);
+});
+
+const displayedNotifications = computed(() => {
+  return user.value.notifications.slice(0, notificationsToShow.value);
+});
+
+const displayedReviews = computed(() => {
+  return user.value.reviews.slice(0, reviewsToShow.value);
+});
+
+const loadMore = () => {
+  ordersToShow.value += 4;
+};
+
+const loadMoreNotification = () => {
+  notificationsToShow.value += 3;
+};
+
+const loadMoreReviews = () => {
+  reviewsToShow.value += 4;
+};
 
 const openModal = () => {
 editedUser.value = { ...user.value };

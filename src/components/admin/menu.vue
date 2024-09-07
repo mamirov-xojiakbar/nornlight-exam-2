@@ -1,5 +1,5 @@
 <template>
-    <div class="p-[20px] pr-[50px] bg-[#454545] fixed h-screen text-white">
+    <div id="menu" class="p-[20px] pr-[50px] bg-[#454545] fixed h-screen text-white">
         <div class="flex gap-[12px] items-center mb-[40px]">
             <router-link to="/home">
                 <img src="/nazad.png" alt="">
@@ -31,6 +31,16 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+@media (max-width: 1015px) {
+  #menu {
+    display: none;
+  }
+}
 
+@media (max-width: 640px) {
+  #menu {
+    display: none;
+  }
+}
 </style>

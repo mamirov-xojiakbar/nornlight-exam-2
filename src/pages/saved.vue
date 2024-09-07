@@ -1,5 +1,5 @@
 <template>
-  <div id="mt" class="px-[10px] mb-[50px] mt-[20px]">
+  <div id="mt" class="px-[10px] mb-[50px] mt-[20px] container">
     <div class="flex">
       <p id="text" class="font-bold text-[20px] md:text-[30px] md:leading-[70.4px] md:mb-[34px] mb-[20px]">Избранные товары</p>
       <p class="bg-red-500 w-[20px] h-[20px] flex items-center justify-center text-white rounded-[50%] ml-4">{{ likedProductCount }}</p>
@@ -23,7 +23,7 @@
           
           <router-link :to="{ name: 'product-detail', params: { id: product.id } }">
             <div class="md:h-[300px] h-[230px] rounded-[10px] flex ">
-              <img :src="product.img" alt="Img" class="rounded-[20px]">
+              <img :src="product.img" alt="Img" class="rounded-[20px] object-cover">
             </div>
             <p class="font-medium text-[13px] leading-[20px] mt-[12px] mx-[10px]">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
             <p class="line-through mt-[24px] opacity-[70%] font-medium text-[12px] leading-[13.2px] absolute bottom-[50px] left-[10px]">${{ product.sale }}</p>
