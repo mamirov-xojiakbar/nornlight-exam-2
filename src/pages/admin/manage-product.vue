@@ -1,26 +1,28 @@
 <template>
-  <div>
+  <div class="mb-[100px]">
     <p class="font-medium text-[28px] leading-[30.8px] mb-[33px]">Manage product</p>
     <div v-if="loading" class="flex justify-center items-center h-64">
       <p>Loading...</p>
     </div>
 
-    <div v-else class="grid md:grid-cols-3 grid-cols-2 gap-5">
-      <div v-for="item in items" :key="item.id" class="hover:shadow-xl border hover:border-none p-5 relative">
+    <div v-else id="grid_p" class="grid grid-cols-3 gap-5">
+      <div v-for="item in items" :key="item.id" class="relative hover:shadow-xl grid grid-rows-1 h-96 md:h-[500px] hover:rounded-lg">
         <router-link :to="{ name: 'product-detail', params: { id: item.id } }">
-          <img :src="item.img" alt="Img">
-          <p class="font-medium text-[20px] leading-[22px] mt-[32px]">{{ item.title }}</p>
-          <p class="line-through mt-[24px] opacity-[70%] font-medium text-[12px] leading-[13.2px]">${{ item.sale }}</p>
+          <div class="md:h-72 h-56 rounded-lg overflow-hidden">
+            <img :src="item.img" alt="Img" class="w-full h-full object-cover">
+          </div>
+          <p class="font-medium text-sm leading-5 mt-3 mx-2">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+          <p class="line-through mt-6 opacity-70 font-medium text-xs leading-4 absolute bottom-14 left-2">${{ item.sale }}</p>
         </router-link>
 
-        <div class="flex justify-between items-center">
-          <p class="font-bold text-[20px] leading-[22px]">${{ item.price }}</p>
-          <div class="flex gap-[10px]">
-            <router-link :to="{ name: 'update-product', params: { id: item.id } }" class="border border-black px-[16px] py-[6px] rounded-[100px]">
-              <img src="/update.png" alt="">
+        <div class="flex justify-between items-center mx-2 mb-3">
+          <p class="font-bold text-lg leading-5 mr-[10px]">${{ item.price }}</p>
+          <div class="flex gap-[5px]">
+            <router-link :to="{ name: 'update-product', params: { id: item.id } }" class="bg-gray-500 hover:bg-gray-700 px-[16px] py-[6px] rounded-[100px]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="20" stroke-dashoffset="20" d="M3 21h18"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.2s" values="20;0"/></path><path stroke-dasharray="48" stroke-dashoffset="48" d="M7 17v-4l10 -10l4 4l-10 10h-4"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.2s" dur="0.6s" values="48;0"/></path><path stroke-dasharray="8" stroke-dashoffset="8" d="M14 6l4 4"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.2s" values="8;0"/></path></g></svg>
             </router-link>
-            <button @click="deleteProduct(item.id)" class="bg-[#454545] px-[20px] py-[9px] rounded-[100px]">
-              <img src="/admin-delete.png" alt="">
+            <button @click="deleteProduct(item.id)" class="bg-gray-500 hover:bg-red-500 px-[16px] py-[6px] rounded-[100px]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="white" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"/></svg>
             </button>
           </div>
         </div>
@@ -68,5 +70,16 @@ const deleteProduct = async (id) => {
 onMounted(fetchItems);
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+@media (max-width: 1024px) {
+  #grid_p {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  #grid_p {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 </style>

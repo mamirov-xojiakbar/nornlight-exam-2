@@ -59,85 +59,85 @@
         </button>
       </form>
     </div>
-  </template>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+
+const product = ref({
+    name: '',
+    price: '',
+    sale: '',
+    img: '' // Image file will be stored here as base64
+});
+
+const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            product.value.img = reader.result; // Store image as base64 string
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+const submitForm = async () => {
+    try {
+        const response = await axios.post('https://66863e0e83c983911b014b85.mockapi.io/nornlight/products', product.value);
+        console.log('Product created:', response.data);
+        // Optionally, reset the form
+        product.value = {
+            name: '',
+            price: '',
+            sale: '',
+            img: ''
+        };
+        toast.success('Product created successfully!');
+    } catch (error) {
+        console.error('Error creating product:', error);
+        toast.error('Error creating product!');
+    }
+};
+</script>
   
-  <script setup>
-  import { ref } from 'vue';
-  import axios from 'axios';
-  import { toast } from "vue3-toastify";
-  import "vue3-toastify/dist/index.css";
-  
-  const product = ref({
-      name: '',
-      price: '',
-      sale: '',
-      img: '' // Image file will be stored here as base64
-  });
-  
-  const handleImageUpload = (event) => {
-      const file = event.target.files[0];
-      if (file) {
-          const reader = new FileReader();
-          reader.onload = () => {
-              product.value.img = reader.result; // Store image as base64 string
-          };
-          reader.readAsDataURL(file);
-      }
-  };
-  
-  const submitForm = async () => {
-      try {
-          const response = await axios.post('https://66863e0e83c983911b014b85.mockapi.io/nornlight/products', product.value);
-          console.log('Product created:', response.data);
-          // Optionally, reset the form
-          product.value = {
-              name: '',
-              price: '',
-              sale: '',
-              img: ''
-          };
-          toast.success('Product created successfully!');
-      } catch (error) {
-          console.error('Error creating product:', error);
-          toast.error('Error creating product!');
-      }
-  };
-  </script>
-  
-  <style scoped>
-  .create-product-container {
-    background-color: #f9f9f9;
-  }
-  
-  .form-title {
-    color: #333;
-  }
-  
-  .input-field,
-  .file-input-field {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    background-color: #F8F8F8;
-    transition: border-color 0.2s;
-  }
-  
-  .input-field:focus,
-  .file-input-field:focus {
-    outline: none;
-    border-color: #6A5AE0;
-  }
-  
-  .submit-btn {
-    background: gray;
-    font-size: 18px;
-    padding: 12px;
-    cursor: pointer;
-  }
-  
-  .submit-btn:hover {
-    background: rgb(94, 94, 94);
-  }
-  </style>
+<style scoped>
+.create-product-container {
+  background-color: #f9f9f9;
+}
+
+.form-title {
+  color: #333;
+}
+
+.input-field,
+.file-input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #F8F8F8;
+  transition: border-color 0.2s;
+}
+
+.input-field:focus,
+.file-input-field:focus {
+  outline: none;
+  border-color: #6A5AE0;
+}
+
+.submit-btn {
+  background: gray;
+  font-size: 18px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: rgb(94, 94, 94);
+}
+</style>
   

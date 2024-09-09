@@ -1,24 +1,61 @@
 <template>
-  <div>
-    <p class="font-medium text-[28px] leading-[30.8px] mb-[33px]">Update Product</p>
-    <form @submit.prevent="updateProduct" class="w-[60%]">
-      <div class="flex flex-col gap-[8px] mb-[16px]">
-        <label for="name">Title</label>
-        <input type="text" v-model="product.title" id="name" name="name" required class="bg-[#F8F8F8] p-5 rounded-[10px]"/>
+  <div class="update-product-container max-w-[800px] md:mx-auto py-10">
+    <p class="form-title font-semibold text-[32px] leading-[36px] mb-[40px] text-center">
+      Update Product
+    </p>
+    <form @submit.prevent="updateProduct" class="bg-white shadow-lg rounded-lg p-8">
+      <div class="form-group mb-6">
+        <label for="name" class="block text-gray-700 font-medium mb-2">Title</label>
+        <input
+          type="text"
+          v-model="product.title"
+          id="name"
+          name="name"
+          required
+          placeholder="Enter product title"
+          class="input-field"
+        />
       </div>
-      <div class="flex flex-col gap-[8px] mb-[16px]">
-        <label for="price">Price</label>
-        <input type="number" v-model="product.price" id="price" name="price" required class="bg-[#F8F8F8] p-5 rounded-[10px]"/>
+      <div class="form-group mb-6">
+        <label for="price" class="block text-gray-700 font-medium mb-2">Price</label>
+        <input
+          type="number"
+          v-model="product.price"
+          id="price"
+          name="price"
+          required
+          placeholder="Enter product price"
+          class="input-field"
+        />
       </div>
-      <div class="flex flex-col gap-[8px] mb-[16px]">
-        <label for="sale">Sale</label>
-        <input type="number" v-model="product.sale" id="sale" name="sale" required class="bg-[#F8F8F8] p-5 rounded-[10px]"/>
+      <div class="form-group mb-6">
+        <label for="sale" class="block text-gray-700 font-medium mb-2">Sale</label>
+        <input
+          type="number"
+          v-model="product.sale"
+          id="sale"
+          name="sale"
+          required
+          placeholder="Enter sale percentage"
+          class="input-field"
+        />
       </div>
-      <div class="flex flex-col gap-[8px] mb-[25px]">
-        <label for="img">Image-url</label>
-        <input type="text" v-model="product.img" id="img" name="img" required class="bg-[#F8F8F8] p-5 rounded-[10px]"/>
+      <div class="form-group mb-6">
+        <label for="img" class="block text-gray-700 font-medium mb-2">Image Upload</label>
+        <input
+          type="file"
+          id="img"
+          @change="handleImageUpload"
+          accept="image/*"
+          class="file-input-field"
+        />
       </div>
-      <button type="submit" class="font-medium text-[16px] leading-[19.68px] bg-[#454545] px-[64px] py-[13px] text-white rounded-[5px]">Update</button>
+      <button
+        type="submit"
+        class="submit-btn bg-gradient-to-r from-[#6A5AE0] to-[#9356E3] hover:from-[#5145c6] hover:to-[#7744c1] text-white font-semibold py-3 px-6 rounded-lg w-full transition-all duration-300 ease-in-out"
+      >
+        Update Product
+      </button>
     </form>
   </div>
 </template>
@@ -36,7 +73,7 @@ const product = ref({
   title: '',
   price: '',
   sale: '',
-  img: ''
+  img: '' // Image file will be stored here as base64
 });
 
 const fetchProduct = async () => {
@@ -45,6 +82,17 @@ const fetchProduct = async () => {
     product.value = response.data;
   } catch (error) {
     console.error('Error fetching product:', error);
+  }
+};
+
+const handleImageUpload = (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      product.value.img = reader.result; // Store image as base64 string
+    };
+    reader.readAsDataURL(file);
   }
 };
 
@@ -63,5 +111,38 @@ onMounted(fetchProduct);
 </script>
 
 <style scoped>
-/* Your styles here */
+.update-product-container {
+  background-color: #f9f9f9;
+}
+
+.form-title {
+  color: #333;
+}
+
+.input-field,
+.file-input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #F8F8F8;
+  transition: border-color 0.2s;
+}
+
+.input-field:focus,
+.file-input-field:focus {
+  outline: none;
+  border-color: #6A5AE0;
+}
+
+.submit-btn {
+  background: gray;
+  font-size: 18px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: rgb(94, 94, 94);
+}
 </style>
