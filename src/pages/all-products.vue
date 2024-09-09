@@ -1,16 +1,22 @@
 <template>
   <div id="mt" class="mb-[100px] container mx-auto px-4 mt-[120px]">
 
-    <div id="filterButton" @click="toggleFilter" class="fixed top-[70px] left-0 bg-white px-4 py-2 z-20 md:hidden w-full flex justify-between items-center border-b border-black">
-      <p class="text-black font-bold text-[20px]">Filter</p>
-      <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 1024 1024"><path fill="black" d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1l-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4"/></svg>
+    <div id="filterButton" @click="toggleFilter" class="fixed top-[68px] left-[-10px] bg-white pl-6 px-4 py-[14px] z-20 md:hidden w-[60%] flex justify-between items-center border-b border-r rounded-[5px]">
+      <p class="text-black font-medium text-[17px]">Filters</p>
+      <svg v-if="isFilterOpen" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24"><path fill="black" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg>
+      <svg v-else xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 1024 1024"><path fill="black" d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1l-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4"/></svg>
     </div>
 
     
+    <div 
+      v-if="isFilterOpen" 
+      @click="toggleFilter" 
+      class="fixed inset-0 bg-black opacity-50 z-10"></div>
+
 
     <!-- Filter Sidebar Mobile -->
-    <div v-if="isFilterOpen" id="fm" class="w-[60%] fixed bg-white z-20 rounded-[10px]">
-        <div class="p-4 border rounded-lg ">
+    <div v-if="isFilterOpen" id="fm" class="w-[60%] fixed bg-white z-20 rounded-[10px] left-[-10px]">
+        <div class="p-4 border rounded-lg pl-6">
           <!-- Price Range Filter -->
           <p class="font-bold mb-2">Filter by Price</p>
           <div>
@@ -37,7 +43,11 @@
             <option value="2">2 Stars & above</option>
             <option value="1">1 Star & above</option>
           </select>
+          <div class="w-full flex justify-center">
+            <button @click="toggleFilter" class="bg-gray-300 px-4 py-2 rounded-[5px]">Apply</button>
+          </div>
         </div>
+
     </div>
 
     <p id="text" class="font-bold text-2xl md:text-4xl leading-tight mb-10">Популярные товары</p>
@@ -124,9 +134,9 @@ const items = ref([]);
 const loading = ref(true);
 const priceRange = ref({ min: 0, max: 10000 });
 const selectedCategory = ref('');
-const selectedRating = ref(0); // New rating filter
+const selectedRating = ref(0); 
 const categories = ref([]);
-const isFilterOpen = ref(false);  // Toggle state for mobile filter
+const isFilterOpen = ref(false);  
 
 const toggleFilter = () => {
   isFilterOpen.value = !isFilterOpen.value;
@@ -164,7 +174,7 @@ const clickKarzina = (productId) => {
 };
 
 const toggleLike = (productId) => {
-  if (isLiked(productId)) {
+  if (isLiked(productId)) {  
     store.removeFromLikedProducts(productId);
   } else {
     store.addToLikedProducts(productId);
@@ -218,6 +228,9 @@ onMounted(fetchItems);
   #fd {
     display: none;
   }
+  #filterButton {
+    display: flex;
+  }
 }
 
 @media (min-width: 1015px) {
@@ -230,6 +243,9 @@ onMounted(fetchItems);
 @media (max-width: 1015px) {
   #fd {
     display: none;
+  }
+  #filterButton {
+    display: flex;
   }
 }
 
