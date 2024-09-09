@@ -31,6 +31,7 @@ import MobileMenu from '../components/admin/mobile-menu.vue';
     display: block;
   }
 }
+
 @media (max-width: 840px) {
 #admin2 {
     display: block;
