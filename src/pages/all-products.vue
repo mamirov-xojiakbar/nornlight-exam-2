@@ -1,9 +1,9 @@
 <template>
   <div id="mt" class="mb-[100px] container mx-auto px-4 mt-[130px]">
 
-    <div id="filterButton" @click="toggleFilter" class="fixed top-[68px] left-[-10px] bg-white pl-6 px-4 py-[14px] z-20 md:hidden w-[20%] flex justify-between items-center border-b border-r rounded-[5px]">
+    <div id="filterButton" @click="toggleFilter" class="fixed top-[63px] left-[-10px] bg-white pl-6 px-4 py-[14px] z-20 md:hidden w-[130px] flex justify-between items-center border-b border-r rounded-[5px]">
       <p class="text-black font-medium text-[17px]">Filters</p>
-      <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 1024 1024"><path fill="black" d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1l-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path fill="black" d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1l-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4"/></svg>
     </div>
 
     
@@ -14,7 +14,7 @@
 
 
     <!-- Filter Sidebar Mobile -->
-    <div v-if="isFilterOpen" id="fm" class="w-[60%] fixed bg-white z-20 rounded-[10px] left-[-10px] top-[66px]">
+    <div v-if="isFilterOpen" id="fm" class="w-[60%] fixed bg-white z-20 rounded-[10px] left-[-10px] top-[60px]">
         <div class="p-4 border rounded-lg pl-6">
           <!-- Price Range Filter -->
           <div class="flex justify-between">

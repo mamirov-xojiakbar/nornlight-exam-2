@@ -35,6 +35,27 @@
           </div>
   
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-50 p-4 rounded-lg shadow col-span-1 md:col-span-2">
+              <h3 class="text-xl font-semibold text-gray-700 mb-4">Notifications</h3>
+              <ul class="space-y-4">
+                <li
+                  v-for="notification in displayedNotifications"
+                  :key="notification.id"
+                  class="p-4 bg-white rounded-lg shadow flex justify-between items-center"
+                >
+                  <p class="text-gray-700">{{ notification.message }}</p>
+                  <span class="text-xs font-semibold text-gray-500">{{ notification.date }}</span>
+                </li>
+              </ul>
+              <button    
+                v-if="displayedNotifications.length < user.notifications.length" 
+                @click="loadMoreNotification" 
+                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
+              >
+                More
+              </button>
+            </div>
+
             <div class="bg-gray-50 p-4 rounded-lg shadow">
               <h3 class="text-xl font-semibold text-gray-700 mb-4">Orders</h3>
               <ul class="space-y-4">
@@ -92,27 +113,6 @@
               <button    
                 v-if="displayedReviews.length < user.reviews.length" 
                 @click="loadMoreReviews" 
-                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
-              >
-                More
-              </button>
-            </div>
-  
-            <div class="bg-gray-50 p-4 rounded-lg shadow col-span-1 md:col-span-2">
-              <h3 class="text-xl font-semibold text-gray-700 mb-4">Notifications</h3>
-              <ul class="space-y-4">
-                <li
-                  v-for="notification in displayedNotifications"
-                  :key="notification.id"
-                  class="p-4 bg-white rounded-lg shadow flex justify-between items-center"
-                >
-                  <p class="text-gray-700">{{ notification.message }}</p>
-                  <span class="text-xs font-semibold text-gray-500">{{ notification.date }}</span>
-                </li>
-              </ul>
-              <button    
-                v-if="displayedNotifications.length < user.notifications.length" 
-                @click="loadMoreNotification" 
                 class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
               >
                 More
@@ -200,6 +200,28 @@
             </button>
           </div>
 
+          <div class="bg-gray-50 p-4 rounded-lg shadow col-span-1 md:col-span-2">
+              <h3 class="text-xl font-semibold text-gray-700 mb-4">Notifications</h3>
+              <ul class="space-y-4">
+                <li
+                  v-for="notification in displayedNotifications"
+                  :key="notification.id"
+                  class="p-4 bg-white rounded-lg shadow flex justify-between items-center"
+                >
+                  <p class="text-gray-700">{{ notification.message }}</p>
+                  <span class="text-xs font-semibold text-gray-500">{{ notification.date }}</span>
+                </li>
+              </ul>
+
+              <button    
+                v-if="displayedNotifications.length < user.notifications.length" 
+                @click="loadMoreNotification" 
+                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
+              >
+                More
+              </button>
+          </div>
+
           <div class="p-4">
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Orders</h3>
             <ul class="space-y-4">
@@ -261,28 +283,6 @@
               >
                 More
             </button>
-          </div>
-
-          <div class="bg-gray-50 p-4 rounded-lg shadow col-span-1 md:col-span-2">
-              <h3 class="text-xl font-semibold text-gray-700 mb-4">Notifications</h3>
-              <ul class="space-y-4">
-                <li
-                  v-for="notification in displayedNotifications"
-                  :key="notification.id"
-                  class="p-4 bg-white rounded-lg shadow flex justify-between items-center"
-                >
-                  <p class="text-gray-700">{{ notification.message }}</p>
-                  <span class="text-xs font-semibold text-gray-500">{{ notification.date }}</span>
-                </li>
-              </ul>
-
-              <button    
-                v-if="displayedNotifications.length < user.notifications.length" 
-                @click="loadMoreNotification" 
-                class="mt-6 py-2 px-6 bg-[#4C4C4C] text-white font-semibold rounded-lg"
-              >
-                More
-              </button>
           </div>
         </div>
       </div>
