@@ -5,7 +5,7 @@
     <div id="admin" class="ml-[450px] px-[32px]">
         <router-view></router-view>
     </div>
-    <div id="admin2" class="px-[15px]">
+    <div id="admin2" class="px-[15px] mb-[100px]">
         <router-view></router-view>
     </div>
   </div>
