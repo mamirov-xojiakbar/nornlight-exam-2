@@ -1,9 +1,9 @@
 <template>
-    <div class="container mx-auto mt-10 grid grid-cols-12 gap-5">
+    <div class="container mx-auto grid grid-cols-12 gap-5">
       
   
       <!-- Create Category Form -->
-      <div class="col-span-9 bg-white shadow-lg rounded-lg p-8">
+      <div class="col-span-9 bg-white shadow-lg rounded-lg p-8 mt-5">
         <h2 class="text-2xl font-semibold text-gray-800 mb-6">Create New Category</h2>
         <form @submit.prevent="submitCategory">
           <!-- Option to choose between new type or existing -->

@@ -2,10 +2,10 @@
   <div>
     <Menu />
     <MobileMenu />
-    <div id="admin" class="ml-[450px] px-[32px] py-[22px]">
+    <div id="admin" class="ml-[450px] px-[32px]">
         <router-view></router-view>
     </div>
-    <div id="admin2" class="px-[15px] py-[22px]">
+    <div id="admin2" class="px-[15px]">
         <router-view></router-view>
     </div>
   </div>
