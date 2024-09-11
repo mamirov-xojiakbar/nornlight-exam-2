@@ -110,12 +110,12 @@
                 <img :src="item.img" alt="Img" class="w-full h-full object-cover">
               </div>
               <p class="font-medium text-sm leading-5 mt-3 mx-2">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+              <p class="font-medium text-sm mx-2">{{ item.rating }} Stars</p>
               <p class="line-through mt-6 opacity-70 font-medium text-xs leading-4 absolute bottom-14 left-2">${{ item.sale }}</p>
             </router-link>
 
             <div class="flex justify-between items-center mx-2 mb-3">
               <p class="font-bold text-lg leading-5">${{ item.price }}</p>
-              <p class="font-medium text-sm">{{ item.rating }} Stars</p>
               <button @click="clickKarzina(item.id)" class="border border-black/50 px-5 py-2.5 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21.052 11.5l.279-1.66c.182-1.086.273-1.628-.019-1.984c-.291-.356-.827-.356-1.898-.356H4.586c-1.071 0-1.607 0-1.898.356c-.292.356-.2.898-.019 1.984l1.204 7.18c.399 2.38.598 3.569 1.413 4.275C6.1 22 7.274 22 9.622 22H12m2-4h8m-4 4v-8m-.5-6.5a5.5 5.5 0 1 0-11 0" color="black"/></svg>
               </button>

@@ -13,10 +13,10 @@
             :key="img"
             alt="Thumbnail Image"
             @click="swapImage(img)"
-            class="rounded-[10px] w-[100px] h-[88px]"
+            class="rounded-[10px] w-[70px] h-[88px] object-cover"
           />
-          <div @click="swapToVideo" class="rounded-[10px] w-[100px] h-[88px] cursor-pointer bg-gray-300 flex items-center justify-center">
-            <span class="text-sm">Watch Video</span>
+          <div @click="swapToVideo" class="rounded-[10px] w-[70px] h-[88px] cursor-pointer bg-gray-300 flex items-center justify-center">
+            <span class="text-sm text-center">Watch Video</span>
           </div>
         </div>
         <div id="2" class="relative md:w-[430px] md:h-[500px] w-full mb-[40px] md:mb-0 rounded-[20px]">
@@ -66,7 +66,7 @@
       </div>
 
       <!-- Mobile -->
-      <div id="mobile" class="md:hidden">
+      <div id="mobile" class="md:hidden px-[15px]">
         <swiper
           :scrollbar="{
             hide: true,
