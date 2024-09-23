@@ -24,12 +24,12 @@
         </router-link>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  </script>
-  
-  <style scoped>
-  /* Optional: Add any custom styles here */
-  </style>
+</template>
+
+<script setup>
+</script>
+
+<style scoped>
+
+</style>
   
