@@ -2,14 +2,12 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(),
-  redirect: '/',
   routes: [
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('../pages/not-found.vue')
     },
-
     {
       path: '/',
       component: () => import('../layout/default.vue'),
@@ -92,7 +90,6 @@ const router = createRouter({
         }
       ]
     },
-
     {
       path: '/admin',
       name: 'admin',
@@ -126,39 +123,49 @@ const router = createRouter({
         }
       ]
     },
-
     {
       path: '/login',
       name: 'login',
       component: () => import('../pages/login.vue')
     },
-
     {
       path: '/register',
       name: 'register',
       component: () => import('../pages/register.vue')
     },
-
     {
       path: '/payment',
       name: 'payment',
       component: () => import('../pages/payment.vue')
     },
-    
     {
       path: '/about-payment',
       name: 'about-payment',
       component: () => import('../pages/about-payment.vue')
     },
-    
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     } else {
-      return { top: 0 }
+      return { top: 0 };
     }
   }
-})
+});
+
+// Foydalanuvchini login sahifasiga yo'naltirish
+router.beforeEach((to, from, next) => {
+  // Ochiq sahifalar (login sahifasi va ro'yxatdan o'tish sahifasi)
+  const publicPages = ['/login', '/register', '/about-payment'];
+  const authRequired = !publicPages.includes(to.path); // Agar sahifa auth talab qilsa
+  const loggedIn = localStorage.getItem('user'); // user ma'lumotlarini localStorage'dan olish
+
+  if (authRequired && !loggedIn) {
+    // Agar foydalanuvchi tizimga kirmagan bo'lsa, login sahifasiga yo'naltirish
+    return next('/login');
+  }
+
+  next(); // Agar tizimga kirgan bo'lsa yoki ochiq sahifaga ketsa davom etadi
+});
 
 export default router;
