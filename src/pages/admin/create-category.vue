@@ -2,9 +2,9 @@
   <div @click="isDropdownOpen = false" v-if="isDropdownOpen" class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent">
 
   </div>
-  <div class="container mx-auto grid grid-cols-12 gap-5">
+  <div class="grid grid-cols-1 gap-5">
     <!-- Create Category Form -->
-    <div class="col-span-9 bg-white shadow-lg rounded-lg p-8 mt-5">
+    <div class="col-span-9 bg-white shadow-lg rounded-lg p-8 mt-16">
       <h2 class="text-2xl font-semibold text-gray-800 mb-6">
         Create New Category
       </h2>
@@ -142,7 +142,7 @@ const fetchCategories = async () => {
     const token = getTokenFromLocalStorage()
     setAuthorizationHeader(token)
 
-    const lang = 'uz' // Language parameter
+    const lang = 'en' // Language parameter
     const response = await axios.get(`/api/categories/fetch?lang=${lang}`)
     categories.value = response.data
     // console.log('Fetched categories:', categories.value); // Log fetched categories
