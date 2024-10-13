@@ -84,20 +84,20 @@
         </div>
 
         <!-- Submit Button -->
-        <div class="flex justify-between items-center">
+        <div class="flex justify-center items-center">
           <button
             type="submit"
-            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline transition-all duration-300"
+            class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition-all duration-300"
           >
             Create Category
           </button>
-          <button
+          <!-- <button
             type="button"
             @click="resetForm"
             class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline transition-all duration-300"
           >
             Reset
-          </button>
+          </button> -->
         </div>
       </form>
       <p v-if="errorMessage" class="text-red-500 mt-4">{{ errorMessage }}</p>
@@ -222,11 +222,11 @@ const submitCategory = async () => {
 }
 
 // Reset the form
-const resetForm = () => {
-  categoryName.value = { uz: '', en: '', ru: '' }
-  selectedParentCategory.value = null
-  errorMessage.value = ''
-}
+// const resetForm = () => {
+//   categoryName.value = { uz: '', en: '', ru: '' }
+//   selectedParentCategory.value = null
+//   errorMessage.value = ''
+// }
 </script>
 
 <style scoped>
