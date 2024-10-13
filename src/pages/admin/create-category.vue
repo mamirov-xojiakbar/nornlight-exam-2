@@ -2,25 +2,36 @@
   <div class="container mx-auto grid grid-cols-12 gap-5">
     <!-- Create Category Form -->
     <div class="col-span-9 bg-white shadow-lg rounded-lg p-8 mt-5">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Create New Category</h2>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+        Create New Category
+      </h2>
       <form @submit.prevent="submitCategory">
         <!-- Parent Category Selection -->
         <div class="mb-5">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Parent Category</label>
+          <label class="block text-gray-700 text-sm font-bold mb-2"
+            >Parent Category</label
+          >
           <select
             v-model="selectedParentCategory"
+            @change="log"
             class="shadow-sm border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-all duration-300"
           >
-            <option value="null" selected>No Parent (Root Category)</option>
-            <option v-for="category in hierarchicalCategories" :key="category.id" :value="category.id">
-              {{ category.fullName }}
+            <option :value="null" selected>No Parent (Root Category)</option>
+            <option
+              v-for="category, index in categories"
+              :key="index"
+              :value="index+1"
+            >
+              {{ category.name }}
             </option>
           </select>
         </div>
 
         <!-- Category Name (UZ) -->
         <div class="mb-5">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Category Name (UZ)</label>
+          <label class="block text-gray-700 text-sm font-bold mb-2"
+            >Category Name (UZ)</label
+          >
           <input
             type="text"
             v-model="categoryName.uz"
@@ -32,7 +43,9 @@
 
         <!-- Category Name (EN) -->
         <div class="mb-5">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Category Name (EN)</label>
+          <label class="block text-gray-700 text-sm font-bold mb-2"
+            >Category Name (EN)</label
+          >
           <input
             type="text"
             v-model="categoryName.en"
@@ -44,7 +57,9 @@
 
         <!-- Category Name (RU) -->
         <div class="mb-5">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Category Name (RU)</label>
+          <label class="block text-gray-700 text-sm font-bold mb-2"
+            >Category Name (RU)</label
+          >
           <input
             type="text"
             v-model="categoryName.ru"
@@ -77,111 +92,116 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
 
 const categoryName = ref({
   uz: '',
   en: '',
-  ru: '',
-});
+  ru: ''
+})
 
-const selectedParentCategory = ref(null);
-const categories = ref([]);
-const hierarchicalCategories = ref([]);
-const errorMessage = ref('');
+const selectedParentCategory = ref(null)
+const categories = ref([])
+const hierarchicalCategories = ref([])
+const errorMessage = ref('')
 
 // Fetch categories from API when the component mounts
 onMounted(async () => {
-  await fetchCategories();
-});
+  await fetchCategories()
+})
 
 // Fetch categories function
 const fetchCategories = async () => {
   try {
-    const token = getTokenFromLocalStorage();
-    setAuthorizationHeader(token);
-    
-    const lang = 'uz'; // Language parameter
-    const response = await axios.get(`/api/categories/fetch?lang=${lang}`);
-    categories.value = response.data;
-    console.log('Fetched categories:', categories.value); // Log fetched categories
-    processCategories();
+    const token = getTokenFromLocalStorage()
+    setAuthorizationHeader(token)
+
+    const lang = 'uz' // Language parameter
+    const response = await axios.get(`/api/categories/fetch?lang=${lang}`)
+    categories.value = response.data
+    // console.log('Fetched categories:', categories.value); // Log fetched categories
+    // processCategories();
   } catch (error) {
-    console.error('Error fetching categories:', error);
-    errorMessage.value = 'Failed to fetch categories. Please check your access.';
+    console.error('Error fetching categories:', error)
+    errorMessage.value = 'Failed to fetch categories. Please check your access.'
   }
-};
+}
 
 // Get access token from local storage
 const getTokenFromLocalStorage = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  return user?.access_token || null;
-};
+  const user = JSON.parse(localStorage.getItem('user'))
+  return user?.access_token || null
+}
 
 // Set authorization header for Axios requests
 const setAuthorizationHeader = (token) => {
   if (token) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
   } else {
-    throw new Error('Access token not found');
+    throw new Error('Access token not found')
   }
-};
+}
 
 // Process categories into hierarchical names
-const processCategories = () => {
-  console.log('Processing categories...'); // Log to indicate processing
-  console.log('Original categories:', categories.value); // Log the original data
+// const processCategories = () => {
+//   console.log('Processing categories...'); // Log to indicate processing
+//   console.log('Original categories:', categories.value); // Log the original data
 
-  const createFullName = (category, parentName = '') => {
-    const fullName = parentName ? `${parentName} -> ${category.name.uz}` : category.name.uz;
-    return { id: category.id, fullName };
-  };
+//   const createFullName = (category, parentName = '') => {
+//     const fullName = parentName ? `${parentName} -> ${category.name.uz}` : category.name.uz;
+//     return { id: category.id, fullName };
+//   };
 
-  const buildHierarchy = (categoryList, parentId = null, parentName = '') => {
-    return categoryList
-      .filter((cat) => cat.parentId === parentId)
-      .flatMap((cat) => {
-        const processed = createFullName(cat, parentName);
-        const children = buildHierarchy(categoryList, cat.id, processed.fullName);
-        return [processed, ...children];
-      });
-  };
+//   const buildHierarchy = (categoryList, parentId = null, parentName = '') => {
+//     return categoryList
+//       .filter((cat) => cat.parentId === parentId)
+//       .flatMap((cat) => {
+//         const processed = createFullName(cat, parentName);
+//         const children = buildHierarchy(categoryList, cat.id, processed.fullName);
+//         return [processed, ...children];
+//       });
+//   };
 
-  hierarchicalCategories.value = buildHierarchy(categories.value);
-  console.log('Hierarchical categories:', hierarchicalCategories.value); // Log hierarchical categories
-};
+//   hierarchicalCategories.value = buildHierarchy(categories.value);
+//   console.log('Hierarchical categories:', hierarchicalCategories.value); // Log hierarchical categories
+// };
+
+const log = () => {
+console.log(selectedParentCategory.value);
+}
 
 // Submit category to API
 const submitCategory = async () => {
+  console.log('select', selectedParentCategory.value)
   const newCategory = {
     name: {
       uz: categoryName.value.uz,
       en: categoryName.value.en,
-      ru: categoryName.value.ru,
+      ru: categoryName.value.ru
     },
-    parentId: selectedParentCategory.value !== 'null' ? selectedParentCategory.value : null,
-  };
+    parentId: selectedParentCategory.value
+  }
 
   try {
-    const token = getTokenFromLocalStorage();
-    setAuthorizationHeader(token);
+    const token = getTokenFromLocalStorage()
+    setAuthorizationHeader(token)
 
-    await axios.post('/api/categories/add', newCategory);
-    console.log('Category created successfully:', newCategory);
+    await axios.post('/api/categories/add', newCategory)
+    console.log('Category created successfully:', newCategory)
     resetForm();
   } catch (error) {
-    console.error('Error creating category:', error);
-    errorMessage.value = 'Error creating category. Please try again.';
+    console.error('Error creating category:', error)
+    errorMessage.value = 'Error creating category. Please try again.'
   }
-};
+}
 
 // Reset the form
 const resetForm = () => {
-  categoryName.value = { uz: '', en: '', ru: '' };
-  selectedParentCategory.value = null;
-  errorMessage.value = '';
-};
+  categoryName.value = { uz: '', en: '', ru: '' }
+  selectedParentCategory.value = null
+  errorMessage.value = ''
+}
 </script>
 
 <style scoped>
