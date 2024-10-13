@@ -1,4 +1,7 @@
 <template>
+  <div @click="isDropdownOpen = false" v-if="isDropdownOpen" class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent">
+
+  </div>
   <div class="container mx-auto grid grid-cols-12 gap-5">
     <!-- Create Category Form -->
     <div class="col-span-9 bg-white shadow-lg rounded-lg p-8 mt-5">
@@ -11,20 +14,31 @@
           <label class="block text-gray-700 text-sm font-bold mb-2"
             >Parent Category</label
           >
-          <select
-            v-model="selectedParentCategory"
-            @change="log"
-            class="shadow-sm border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-all duration-300"
-          >
-            <option :value="null" selected>No Parent (Root Category)</option>
-            <option
-              v-for="category, index in categories"
-              :key="index"
-              :value="index+1"
+          <div class="relative">
+            <button
+              @click="toggleDropdown"
+              class="shadow-sm border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-all duration-300"
             >
-              {{ category.name }}
-            </option>
-          </select>
+              {{
+                selectedParentCategory
+                  ? categories[selectedParentCategory - 1].name
+                  : 'No Parent (Root Category)'
+              }}
+            </button>
+            <div
+              v-if="isDropdownOpen"
+              class="absolute z-20 w-full bg-white shadow-md max-h-48 overflow-y-auto"
+            >
+              <div
+                v-for="(category, index) in categories"
+                :key="index"
+                @click="selectCategory(index + 1)"
+                class="py-2 px-4 hover:bg-gray-200 cursor-pointer"
+              >
+                {{ category.name }}
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Category Name (UZ) -->
@@ -106,6 +120,17 @@ const categories = ref([])
 const hierarchicalCategories = ref([])
 const errorMessage = ref('')
 
+const isDropdownOpen = ref(false)
+
+const toggleDropdown = () => {
+  isDropdownOpen.value = !isDropdownOpen.value
+}
+
+const selectCategory = (index) => {
+  selectedParentCategory.value = index
+  isDropdownOpen.value = false
+}
+
 // Fetch categories from API when the component mounts
 onMounted(async () => {
   await fetchCategories()
@@ -168,7 +193,7 @@ const setAuthorizationHeader = (token) => {
 // };
 
 const log = () => {
-console.log(selectedParentCategory.value);
+  console.log(selectedParentCategory.value)
 }
 
 // Submit category to API
@@ -189,7 +214,7 @@ const submitCategory = async () => {
 
     await axios.post('/api/categories/add', newCategory)
     console.log('Category created successfully:', newCategory)
-    resetForm();
+    resetForm()
   } catch (error) {
     console.error('Error creating category:', error)
     errorMessage.value = 'Error creating category. Please try again.'
