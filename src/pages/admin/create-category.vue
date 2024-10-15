@@ -1,7 +1,9 @@
 <template>
-  <div @click="isDropdownOpen = false" v-if="isDropdownOpen" class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent">
-
-  </div>
+  <div
+    @click="isDropdownOpen = false"
+    v-if="isDropdownOpen"
+    class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent"
+  ></div>
   <div class="container mx-auto grid grid-cols-12 gap-5">
     <!-- Create Category Form -->
     <div class="col-span-9 bg-white shadow-lg rounded-lg p-8 mt-5">
@@ -48,7 +50,7 @@
           >
           <input
             type="text"
-            v-model="categoryNameFun.uz"
+            v-model="categoryName.uz"
             placeholder="Enter category name in Uzbek"
             class="shadow-sm border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-all duration-300"
             required
