@@ -153,19 +153,17 @@ const router = createRouter({
   }
 });
 
-// Foydalanuvchini login sahifasiga yo'naltirish
 router.beforeEach((to, from, next) => {
-  // Ochiq sahifalar (login sahifasi va ro'yxatdan o'tish sahifasi)
   const publicPages = ['/login', '/register', '/about-payment'];
-  const authRequired = !publicPages.includes(to.path); // Agar sahifa auth talab qilsa
-  const loggedIn = localStorage.getItem('user'); // user ma'lumotlarini localStorage'dan olish
+  const authRequired = !publicPages.includes(to.path); 
+  const loggedIn = localStorage.getItem('user');
 
   if (authRequired && !loggedIn) {
-    // Agar foydalanuvchi tizimga kirmagan bo'lsa, login sahifasiga yo'naltirish
+   
     return next('/login');
   }
 
-  next(); // Agar tizimga kirgan bo'lsa yoki ochiq sahifaga ketsa davom etadi
+  next(); 
 });
 
 export default router;

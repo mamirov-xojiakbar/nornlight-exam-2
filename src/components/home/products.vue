@@ -59,15 +59,15 @@ import { usePiniaStore } from '../../store/pinia';
 const store = usePiniaStore();
 const items = ref([]);
 const loading = ref(true);
-const limit = ref(8);  // Initialize limit with 8
-const buttonClicked = ref(false);  // Track button clicks
-const buttonText = ref('Показать еще 20');  // Initialize button text
-const router = useRouter();  // Use router to navigate
+const limit = ref(8);  
+const buttonClicked = ref(false); 
+const buttonText = ref('Показать еще 20'); 
+const router = useRouter();  
 
 const fetchItems = async () => {
   try {
     const response = await axios.get('https://66863e0e83c983911b014b85.mockapi.io/nornlight/products');
-    items.value = response.data.slice(0, limit.value);  // Use limit.value
+    items.value = response.data.slice(0, limit.value);  
     store.setItems(items.value); 
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -77,10 +77,10 @@ const fetchItems = async () => {
 };
 
 const loadMore = async () => {
-  limit.value += 8;  // Increment limit by 8
+  limit.value += 8;  
   try {
     const response = await axios.get('https://66863e0e83c983911b014b85.mockapi.io/nornlight/products');
-    items.value = response.data.slice(0, limit.value);  // Fetch more items up to the new limit
+    items.value = response.data.slice(0, limit.value);  
     store.setItems(items.value); 
   } catch (error) {
     console.error('Error fetching more data:', error);
@@ -89,11 +89,11 @@ const loadMore = async () => {
 
 const handleButtonClick = () => {
   if (buttonClicked.value) {
-    router.push('/all-products');  // Navigate to all-products page
+    router.push('/all-products');  
   } else {
-    loadMore();  // Load more items
-    buttonText.value = 'Все товары';  // Change button text
-    buttonClicked.value = true;  // Set button clicked to true
+    loadMore();  
+    buttonText.value = 'Все товары';  
+    buttonClicked.value = true; 
   }
 };
 

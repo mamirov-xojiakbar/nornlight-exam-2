@@ -5,8 +5,12 @@
     class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent"
   ></div>
   <div class="container mx-auto grid grid-cols-12 gap-5">
+  <div @click="isDropdownOpen = false" v-if="isDropdownOpen" class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent">
+
+  </div>
+  <div class="grid grid-cols-1 gap-5">
     <!-- Create Category Form -->
-    <div class="col-span-9 bg-white shadow-lg rounded-lg p-8 mt-5">
+    <div class="col-span-9 bg-white shadow-lg rounded-lg p-8 mt-16">
       <h2 class="text-2xl font-semibold text-gray-800 mb-6">
         Create New Category
       </h2>
@@ -89,7 +93,7 @@
         <div class="flex justify-between items-center">
           <button
             type="submit"
-            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline transition-all duration-300"
+            class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition-all duration-300"
           >
             Create Category
           </button>
@@ -178,29 +182,6 @@ const setAuthorizationHeader = (token) => {
   }
 }
 
-// Process categories into hierarchical names
-// const processCategories = () => {
-//   console.log('Processing categories...'); // Log to indicate processing
-//   console.log('Original categories:', categories.value); // Log the original data
-
-//   const createFullName = (category, parentName = '') => {
-//     const fullName = parentName ? `${parentName} -> ${category.name.uz}` : category.name.uz;
-//     return { id: category.id, fullName };
-//   };
-
-//   const buildHierarchy = (categoryList, parentId = null, parentName = '') => {
-//     return categoryList
-//       .filter((cat) => cat.parentId === parentId)
-//       .flatMap((cat) => {
-//         const processed = createFullName(cat, parentName);
-//         const children = buildHierarchy(categoryList, cat.id, processed.fullName);
-//         return [processed, ...children];
-//       });
-//   };
-
-//   hierarchicalCategories.value = buildHierarchy(categories.value);
-//   console.log('Hierarchical categories:', hierarchicalCategories.value); // Log hierarchical categories
-// };
 
 const log = () => {
   console.log(selectedParentCategory.value)
@@ -240,5 +221,4 @@ const resetForm = () => {
 </script>
 
 <style scoped>
-/* Custom styles for better UX if needed */
 </style>
