@@ -21,7 +21,7 @@
             >
               {{
                 selectedParentCategory
-                  ? categories[selectedParentCategory - 1].name
+                  ? categoryNameFun(categories)
                   : 'No Parent (Root Category)'
               }}
             </button>
@@ -32,7 +32,7 @@
               <div
                 v-for="(category, index) in categories"
                 :key="index"
-                @click="selectCategory(index + 1)"
+                @click="selectCategory(category.id)"
                 class="py-2 px-4 hover:bg-gray-200 cursor-pointer"
               >
                 {{ category.name }}
@@ -48,7 +48,7 @@
           >
           <input
             type="text"
-            v-model="categoryName.uz"
+            v-model="categoryNameFun.uz"
             placeholder="Enter category name in Uzbek"
             class="shadow-sm border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-all duration-300"
             required
@@ -124,6 +124,14 @@ const isDropdownOpen = ref(false)
 
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
+}
+
+const categoryNameFun = (cate) => {
+  for (const element of cate) {
+    if (element.id == selectedParentCategory.value) {
+      return element.name
+    }
+  }
 }
 
 const selectCategory = (index) => {
