@@ -1,4 +1,10 @@
 <template>
+  <div
+    @click="isDropdownOpen = false"
+    v-if="isDropdownOpen"
+    class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent"
+  ></div>
+  <div class="container mx-auto grid grid-cols-12 gap-5">
   <div @click="isDropdownOpen = false" v-if="isDropdownOpen" class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent">
 
   </div>
@@ -21,7 +27,7 @@
             >
               {{
                 selectedParentCategory
-                  ? categories[selectedParentCategory - 1].name
+                  ? categoryNameFun(categories)
                   : 'No Parent (Root Category)'
               }}
             </button>
@@ -32,7 +38,7 @@
               <div
                 v-for="(category, index) in categories"
                 :key="index"
-                @click="selectCategory(index + 1)"
+                @click="selectCategory(category.id)"
                 class="py-2 px-4 hover:bg-gray-200 cursor-pointer"
               >
                 {{ category.name }}
@@ -124,6 +130,14 @@ const isDropdownOpen = ref(false)
 
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
+}
+
+const categoryNameFun = (cate) => {
+  for (const element of cate) {
+    if (element.id == selectedParentCategory.value) {
+      return element.name
+    }
+  }
 }
 
 const selectCategory = (index) => {
