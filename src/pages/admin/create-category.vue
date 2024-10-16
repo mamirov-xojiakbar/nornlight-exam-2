@@ -4,10 +4,7 @@
     v-if="isDropdownOpen"
     class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent"
   ></div>
-  <div class="container mx-auto grid grid-cols-12 gap-5">
-  <div @click="isDropdownOpen = false" v-if="isDropdownOpen" class="absolute top-0 left-0 z-10 w-screen h-screen bg-transparent">
 
-  </div>
   <div class="grid grid-cols-1 gap-5">
     <!-- Create Category Form -->
     <div class="col-span-9 bg-white shadow-lg rounded-lg p-8 mt-16">
